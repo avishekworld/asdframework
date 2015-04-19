@@ -1,9 +1,12 @@
+import creditcard.CardFrm;
+import bank.BankFrm;
+
 
 public class Application {
 
 	public static void main(String[] args) {
 
-		System.out.println("Data");
+		new CardFrm().setVisible(true);
 
 	}
 
