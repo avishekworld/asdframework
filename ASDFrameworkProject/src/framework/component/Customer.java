@@ -1,44 +1,25 @@
+package framework.component;
 
+import java.util.ArrayList;
 
-
-
-
-public abstract class Customer implements ICustomer, IObserver
-{
-	protected Object Name;
-	protected Object Street;
-	protected Object City;
-	protected Object State;
-	protected Object Zip;
-	protected Object Email;
-	private Object customerId;
+public abstract class Customer implements ICustomer, IObserver {
+	protected String name;
+	protected String street;
+	protected String city;
+	protected String state;
+	protected String zip;
+	protected Email email;
+	private String customerId;
 	private ArrayList<Account> accountList;
-	public Object NotificationRule;
-	public void addAccount(Object Account)
-	{
-	
+	private NotificationRule rule;
+
+	public abstract void addAccount(Account account);
+
+	public abstract void removeAccount(Account account);
+
+	public abstract void sendEmail(Email email);
+
+	public void update(Entry entry) {
+
 	}
-	
-	public void removeAccount(Object Account)
-	{
-	
-	}
-	
-	public void sendEmail(Object String)
-	{
-	
-	}
-	
-	public void update(Object Entry)
-	{
-	
-	}
-	
-	public void addAccount(Object Account);
-	
-	public void removeAccount(Object Account);
-	
-	public void sendEmail(Object String);
-	
-	public void update(Object Entry);
 }

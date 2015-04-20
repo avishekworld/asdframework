@@ -1,11 +1,9 @@
+package framework.component;
 
+public interface ICustomer {
+	public void addAccount(Account account);
 
+	public void removeAccount(Account account);
 
-
-
-public interface ICustomer
-{
-	public void addAccount(Object Account);
-	public void removeAccount(Object Account);
-	public void sendEmail(Object String);
+	public void sendEmail(Email email);
 }

@@ -1,45 +1,32 @@
+package framework.component;
 
+import java.util.Date;
 
+public class Personal extends Customer implements IPerson {
+	private Date birthdate;
 
+	@Override
+	public Date getBirthday() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
+	@Override
+	public void addAccount(Account account) {
+		// TODO Auto-generated method stub
 
-public class Personal extends Account, Account, Customer implements IPerson
-{
-	private Object Birthdate;
-	public Date getBirthday()
-	{
-	
 	}
-	
-	public void doDebit(Object Amount)
-	{
-	
+
+	@Override
+	public void removeAccount(Account account) {
+		// TODO Auto-generated method stub
+
 	}
-	
-	public void doCredit(Object Amount)
-	{
-	
+
+	@Override
+	public void sendEmail(Email email) {
+		// TODO Auto-generated method stub
+
 	}
-	
-	public void addInterest()
-	{
-	
-	}
-	
-	public void doDebit(Object Amount)
-	{
-	
-	}
-	
-	public void doCredit(Object Amount)
-	{
-	
-	}
-	
-	public void addInterest()
-	{
-	
-	}
-	
-	public Date getBirthday();
+
 }

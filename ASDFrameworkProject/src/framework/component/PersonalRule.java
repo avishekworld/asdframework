@@ -1,5 +1,8 @@
 package framework.component;
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/master
 
 
 

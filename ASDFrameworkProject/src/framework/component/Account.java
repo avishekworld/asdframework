@@ -1,49 +1,40 @@
+package framework.component;
 
+import java.util.ArrayList;
+import java.util.Date;
 
-
-
-
-public abstract class Account extends Subject
-{
-	protected Type type;
+public abstract class Account extends Subject {
+	protected Type accountType;
 	private double accountBalance;
 	private Customer owner;
-	private Object accountNumber;
+	private int accountNumber;
 	public ArrayList<Entry> transactionEntry;
-	public Object accountOpenDate;
-	public void submit(Object Command)
-	{
-	
-	}
-	
-	public abstract void doDebit(Object Amount);
-	
-	public abstract void doCredit(Object Amount);
-	
+	public Date accountOpenDate;
+
+	public abstract void doDebit(Double amount);
+
+	public abstract void doCredit(Double amount);
+
 	public abstract void addInterest();
-	
-	public Double getCurrentBalance()
-	{
-	
+
+	public Double getCurrentBalance() {
+		return accountBalance;
 	}
-	
-	public void notifyCustomer(Object Transaction)
-	{
-	
+
+	public void notifyCustomer(Entry entry) {
+
 	}
-	
-	public void generateReport(Object Date1, Object Date2, Object IReport)
-	{
-	
+
+	public void generateReport(Date date1, Date date2, IReport report) {
+
 	}
-	
-	public double getTotalDebitAmount(Object Date1, Object Date2)
-	{
-	
+
+	public double getTotalDebitAmount(Date date1, Date date2) {
+		return (Double) null;
+
 	}
-	
-	public double getTotalCreditAmount(Object Date1, Object Date2)
-	{
-	
+
+	public double getTotalCreditAmount(Date date1, Date date2) {
+		return (Double) null;
 	}
 }

@@ -1,9 +1,9 @@
+package framework.component;
 
+public class CompanyRule implements NotificationRule {
 
-
-
-
-public class CompanyRule implements NotificationRule
-{
-	public boolean ruleMatch(Object Entry);
+	@Override
+	public boolean ruleMatch(Entry entry) {
+		return false;
+	}
 }
