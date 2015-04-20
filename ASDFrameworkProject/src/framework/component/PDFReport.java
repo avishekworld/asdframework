@@ -1,14 +1,14 @@
+package framework.component;
 
-
+import java.util.List;
 
 
 
 public class PDFReport implements IReport
 {
-	public void Generate(Object List<Entry>)
+	public void Generate(List<Entry> inputListOfEntry)
 	{
 	
 	}
 	
-	public void Generate(Object List<Entry>);
 }

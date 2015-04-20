@@ -1,3 +1,5 @@
+package framework.component;
+
 
 
 
@@ -5,12 +7,12 @@
 
 public abstract class Subject
 {
-	public void addObserver(Object IObserver)
+	public void addObserver(IObserver iObserver)
 	{
 	
 	}
 	
-	public void removeObserver(Object IObserver)
+	public void removeObserver(IObserver iObserver)
 	{
 	
 	}

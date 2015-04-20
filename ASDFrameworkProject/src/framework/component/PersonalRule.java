@@ -1,3 +1,5 @@
+package framework.component;
+
 
 
 
@@ -6,5 +8,7 @@
 public class PersonalRule implements NotificationRule
 {
 	public Object amountLimit;
-	public boolean ruleMatch(Object Entry);
+	public boolean ruleMatch(Entry entry) {
+		return false;
+	}
 }

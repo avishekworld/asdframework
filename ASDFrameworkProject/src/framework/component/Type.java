@@ -1,20 +1,20 @@
+package framework.component;
 
 
 
 
 
-private abstract class Type
+
+public abstract class Type
 {
-	private Object TypeName;
-	private Object InterestRate;
-	private Object MaxTransactionLimit;
-	public double getInterestRate()
-	{
-	
+	private String typeName;
+	private double interestRate;
+	private double maxTransactionLimit;
+	public double getInterestRate(){
+		return interestRate;
 	}
 	
-	public double getMaxTransactionLimit()
-	{
-	
+	public double getMaxTransactionLimit(){
+		return maxTransactionLimit;
 	}
 }
