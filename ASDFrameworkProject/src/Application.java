@@ -6,7 +6,7 @@ public class Application {
 
 	public static void main(String[] args) {
 
-		new CardFrm().setVisible(true);
+		new BankFrm().setVisible(true);
 
 	}
 
