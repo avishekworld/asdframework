@@ -2434,7 +2434,7 @@
 <XPD:REF name="Views[3]">phPepqDKw0eQ0UoPlNgZfQAA</XPD:REF>
 <XPD:ATTR name="#ClientDependencies" type="integer">1</XPD:ATTR>
 <XPD:REF name="ClientDependencies[0]">1v8kfTbfX0C9QUSdQM2dwQAA</XPD:REF>
-<XPD:ATTR name="#Operations" type="integer">8</XPD:ATTR>
+<XPD:ATTR name="#Operations" type="integer">7</XPD:ATTR>
 <XPD:OBJ name="Operations[0]" type="UMLOperation" guid="DRLmAoWFg0GOGdsHsJcfMwAA">
 <XPD:ATTR name="Name" type="string">addCustomer</XPD:ATTR>
 <XPD:REF name="Owner">LceEhXj0WU6qcE8j+pZyqgAA</XPD:REF>
@@ -2477,23 +2477,19 @@
 </XPD:OBJ>
 </XPD:OBJ>
 <XPD:OBJ name="Operations[4]" type="UMLOperation" guid="lWt7MaUepUibfVs1iVa2EAAA">
-<XPD:ATTR name="Name" type="string">Bank</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">FinanceHandler</XPD:ATTR>
 <XPD:REF name="Owner">LceEhXj0WU6qcE8j+pZyqgAA</XPD:REF>
 <XPD:ATTR name="#Parameters" type="integer">2</XPD:ATTR>
-<XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="ZHb7Dqyw40CjDI76qJH5mAAA">
+<XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="70dxGaV0SEm5s6+UP4GlXwAA">
 <XPD:ATTR name="Name" type="string">IModel</XPD:ATTR>
 <XPD:REF name="BehavioralFeature">lWt7MaUepUibfVs1iVa2EAAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Parameters[1]" type="UMLParameter" guid="2rp7WoDH5E6Z7OK9VuEWgQAA">
+<XPD:OBJ name="Parameters[1]" type="UMLParameter" guid="gD4p8pIE8UGT73nR5dirmwAA">
 <XPD:ATTR name="Name" type="string">IGui</XPD:ATTR>
 <XPD:REF name="BehavioralFeature">lWt7MaUepUibfVs1iVa2EAAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
-<XPD:OBJ name="Operations[5]" type="UMLOperation" guid="ZL58B94tv0O9pH+Cg6eagQAA">
-<XPD:ATTR name="Name" type="string">Bank</XPD:ATTR>
-<XPD:REF name="Owner">LceEhXj0WU6qcE8j+pZyqgAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="Operations[6]" type="UMLOperation" guid="xanzHgPeaEWvA8OoUhWhQAAA">
+<XPD:OBJ name="Operations[5]" type="UMLOperation" guid="xanzHgPeaEWvA8OoUhWhQAAA">
 <XPD:ATTR name="Name" type="string">generateReport</XPD:ATTR>
 <XPD:REF name="Owner">LceEhXj0WU6qcE8j+pZyqgAA</XPD:REF>
 <XPD:ATTR name="#Parameters" type="integer">2</XPD:ATTR>
@@ -2506,7 +2502,7 @@
 <XPD:REF name="BehavioralFeature">xanzHgPeaEWvA8OoUhWhQAAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
-<XPD:OBJ name="Operations[7]" type="UMLOperation" guid="fVUzASZzXEO6deeZ341yqwAA">
+<XPD:OBJ name="Operations[6]" type="UMLOperation" guid="fVUzASZzXEO6deeZ341yqwAA">
 <XPD:ATTR name="Name" type="string">main</XPD:ATTR>
 <XPD:REF name="Owner">LceEhXj0WU6qcE8j+pZyqgAA</XPD:REF>
 </XPD:OBJ>
@@ -3472,6 +3468,11 @@
 <XPD:OBJ name="Operations[2]" type="UMLOperation" guid="W9kxg+Cck0aEpMj7Z5dxtwAA">
 <XPD:ATTR name="Name" type="string">notifyCustomer</XPD:ATTR>
 <XPD:REF name="Owner">NmHVneVUGUCDANiig/s0hgAA</XPD:REF>
+<XPD:ATTR name="#Parameters" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="XoRIMvg9XkqXw0Wiy3c25gAA">
+<XPD:ATTR name="Name" type="string">Entry</XPD:ATTR>
+<XPD:REF name="BehavioralFeature">W9kxg+Cck0aEpMj7Z5dxtwAA</XPD:REF>
+</XPD:OBJ>
 </XPD:OBJ>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[51]" type="UMLGeneralization" guid="vrOQhevRDkq61Lc2KOh+jAAA">

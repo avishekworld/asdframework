@@ -1,12 +1,6 @@
 package framework.component;
-<<<<<<< HEAD
 
 import java.util.List;
-
-=======
->>>>>>> refs/remotes/origin/master
-
-
 
 
 

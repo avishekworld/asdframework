@@ -1,8 +1,4 @@
 package framework.view;
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/master
 
 
 

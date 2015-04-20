@@ -2815,8 +2815,8 @@
 <XPD:ATTR name="Name" type="string">sendEmail</XPD:ATTR>
 <XPD:REF name="Owner">NjGDSLK4E0yqJQreiwXJOgAA</XPD:REF>
 <XPD:ATTR name="#Parameters" type="integer">1</XPD:ATTR>
-<XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="R6C/LOWmMkihxCvVop98HgAA">
-<XPD:ATTR name="Name" type="string">String</XPD:ATTR>
+<XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="MSThi1qjQka2NK/YxXztNAAA">
+<XPD:ATTR name="Name" type="string">Email</XPD:ATTR>
 <XPD:REF name="BehavioralFeature">/5HdJ0abeUOBrMWBSpoXmgAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
@@ -3139,8 +3139,8 @@
 <XPD:ATTR name="Name" type="string">sendEmail</XPD:ATTR>
 <XPD:REF name="Owner">4ZEu6O/IBkuJVM9HRrJLnQAA</XPD:REF>
 <XPD:ATTR name="#Parameters" type="integer">1</XPD:ATTR>
-<XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="KICQlByPH0WPvmKDWH9N4AAA">
-<XPD:ATTR name="Name" type="string">String</XPD:ATTR>
+<XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="3AEOelY7+kSMAppyiXTsqgAA">
+<XPD:ATTR name="Name" type="string">Email</XPD:ATTR>
 <XPD:REF name="BehavioralFeature">40w2k6o+LUWzZuozztzVUwAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
@@ -3468,6 +3468,11 @@
 <XPD:OBJ name="Operations[2]" type="UMLOperation" guid="W9kxg+Cck0aEpMj7Z5dxtwAA">
 <XPD:ATTR name="Name" type="string">notifyCustomer</XPD:ATTR>
 <XPD:REF name="Owner">NmHVneVUGUCDANiig/s0hgAA</XPD:REF>
+<XPD:ATTR name="#Parameters" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="XoRIMvg9XkqXw0Wiy3c25gAA">
+<XPD:ATTR name="Name" type="string">Entry</XPD:ATTR>
+<XPD:REF name="BehavioralFeature">W9kxg+Cck0aEpMj7Z5dxtwAA</XPD:REF>
+</XPD:OBJ>
 </XPD:OBJ>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[51]" type="UMLGeneralization" guid="vrOQhevRDkq61Lc2KOh+jAAA">
