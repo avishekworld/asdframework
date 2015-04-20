@@ -616,7 +616,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="hLFq3hW4/E2wY63aGdbk5gAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="oNcHFqSl506PnpHvfaiAjgAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">IParty</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">ICustomer</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="5D2v46LJyECbPmag4mtJtwAA">
 <XPD:ATTR name="Text" type="string">&lt;&lt;interface&gt;&gt;</XPD:ATTR>
@@ -645,7 +645,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="HeZ+926aw06+E0MRO+5SlQAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="T9JYjNJhdE2kI+6y9IUw9wAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">IOrganization</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">ICompany</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="XJBNba9nDUWcRl7Nh02ePgAA">
 <XPD:ATTR name="Text" type="string">&lt;&lt;interface&gt;&gt;</XPD:ATTR>
@@ -2706,7 +2706,7 @@
 <XPD:REF name="Views[3]">a3z4et13HEKD8cclQOf0+gAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[32]" type="UMLInterface" guid="4ZEu6O/IBkuJVM9HRrJLnQAA">
-<XPD:ATTR name="Name" type="string">IParty</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">ICustomer</XPD:ATTR>
 <XPD:REF name="Namespace">cS3JfCCO3UChW/WftmLUlwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">3</XPD:ATTR>
 <XPD:REF name="Views[0]">m+vW0etN/0KUk/gVDlRBEgAA</XPD:REF>
@@ -2746,7 +2746,7 @@
 </XPD:OBJ>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[33]" type="UMLInterface" guid="ZZMNheTuBUeuQQ4Um5jYKwAA">
-<XPD:ATTR name="Name" type="string">IOrganization</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">ICompany</XPD:ATTR>
 <XPD:REF name="Namespace">cS3JfCCO3UChW/WftmLUlwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">3</XPD:ATTR>
 <XPD:REF name="Views[0]">xu4WjyxSY0CfZj2u3sPrQwAA</XPD:REF>
