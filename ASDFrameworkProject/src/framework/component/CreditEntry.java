@@ -1,8 +1,4 @@
+package framework.component;
 
-
-
-
-
-public class CreditEntry extends Entry
-{
+public class CreditEntry extends Entry {
 }

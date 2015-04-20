@@ -1,45 +1,39 @@
+package framework.component;
 
+public class Company extends Customer implements ICompany {
+	protected int noOfEmployee;
 
+	public int getNoOfEmployee() {
+		return 0;
+	}
 
+	public void doDebit(double amount) {
 
+	}
 
-private class Company extends Account, Account, Customer implements ICompany
-{
-	protected Object NoOfEmployee;
-	public int getNoOfEmployee()
-	{
-	
+	public void doCredit(double amount) {
+
 	}
-	
-	public void doDebit(Object Amount)
-	{
-	
+
+	public void addInterest() {
+
 	}
-	
-	public void doCredit(Object Amount)
-	{
-	
+
+	@Override
+	public void sendEmail(Email email) {
+		// TODO Auto-generated method stub
+
 	}
-	
-	public void addInterest()
-	{
-	
+
+	@Override
+	public void addAccount(Account account) {
+		// TODO Auto-generated method stub
+
 	}
-	
-	public void doDebit(Object Amount)
-	{
-	
+
+	@Override
+	public void removeAccount(Account account) {
+		// TODO Auto-generated method stub
+
 	}
-	
-	public void doCredit(Object Amount)
-	{
-	
-	}
-	
-	public void addInterest()
-	{
-	
-	}
-	
-	public int getNoOfEmployee();
 }

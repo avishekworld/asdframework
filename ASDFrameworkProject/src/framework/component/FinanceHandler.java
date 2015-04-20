@@ -1,49 +1,42 @@
+package framework.component;
 
+import java.util.Date;
+import java.util.List;
 
+import framework.model.IModel;
+import framework.view.IGui;
 
+public class FinanceHandler {
+	protected String name;
+	protected IModel model;
+	protected List<Customer> customerList;
+	protected IGui iGui;
 
+	public void addCustomer(Customer customer) {
 
-public class FinanceHandler
-{
-	protected Object Name;
-	public Object IModel;
-	public void addCustomer(Object Customer)
-	{
-	
 	}
-	
-	public void addInterest()
-	{
-	
+
+	public void addInterest() {
+
 	}
-	
-	public Customer getCustomer(Object String)
-	{
-	
+
+	public Customer getCustomer(String customerId) {
+		return null;
 	}
-	
-	public Account getAccount(Object String)
-	{
-	
+
+	public Account getAccount(String accountId) {
+		return null;
 	}
-	
-	public void Bank(Object IModel, Object IGui)
-	{
-	
+
+	public FinanceHandler(IModel iModel, IGui iGui) {
+
 	}
-	
-	public void Bank()
-	{
-	
+
+	public void generateReport(Date fromDate, Date toDate) {
+
 	}
-	
-	public void generateReport(Object Date1, Object Date2)
-	{
-	
-	}
-	
-	public void main()
-	{
-	
+
+	public void main() {
+
 	}
 }

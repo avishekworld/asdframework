@@ -1,9 +1,5 @@
+package framework.component;
 
-
-
-
-
-public interface IObserver
-{
-	public void update(Object Entry);
+public interface IObserver {
+	public void update(Entry entry);
 }
