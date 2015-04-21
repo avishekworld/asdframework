@@ -88,7 +88,6 @@ public abstract class AGui  extends JFrame
 	        JScrollPane1.getViewport().add(JTable1);
 	        JTable1.setBounds(0, 0, 300, 0);
 	        
-	        getTableData();
 	}
 	
 	/*JButton b1=new JButton("Creation Button");
@@ -106,7 +105,6 @@ public abstract class AGui  extends JFrame
 	
 	public abstract DefaultTableModel getTableModel();
 	
-	public abstract void getTableData();
 	public FinanceHandler getController() {
 		return controller;
 	}
