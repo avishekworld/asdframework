@@ -10,6 +10,12 @@ public class DefaultModel implements IModel {
 	public HashMap<String, Customer> customerList;
 	public HashMap<String, Account> accountList;
 
+	public DefaultModel() {
+		// TODO Auto-generated constructor stub
+		customerList = new HashMap<String, Customer>();
+		accountList = new HashMap<String, Account>();
+	}
+
 	public Customer getCustomer(String customerId) {
 		return customerList.get(customerId);
 	}
@@ -33,6 +39,12 @@ public class DefaultModel implements IModel {
 
 	public HashMap<String, Account> getAllAcounts() {
 		return accountList;
+	}
+
+	@Override
+	public HashMap<String, Customer> getAllCustomers() {
+		// TODO Auto-generated method stub
+		return customerList;
 	}
 
 }
