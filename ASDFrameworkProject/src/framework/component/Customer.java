@@ -11,13 +11,14 @@ public abstract class Customer implements ICustomer, IObserver {
 	protected String zip;
 	protected Email email;
 	private String customerId;
-	private ArrayList<Account> accountList;
+	protected ArrayList<Account> accountList;
 	private NotificationRule rule;
-	
-	Customer(){
+
+	Customer() {
 		customerCounter++;
 		setCustomerId(getCustomerId() + customerCounter);
 	}
+
 	public abstract void addAccount(Account account);
 
 	public abstract void removeAccount(Account account);
@@ -27,9 +28,11 @@ public abstract class Customer implements ICustomer, IObserver {
 	public void update(Entry entry) {
 
 	}
+
 	public String getCustomerId() {
 		return customerId;
 	}
+
 	private void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}

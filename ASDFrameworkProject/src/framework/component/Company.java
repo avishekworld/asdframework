@@ -4,7 +4,7 @@ public class Company extends Customer implements ICompany {
 	protected int noOfEmployee;
 
 	public int getNoOfEmployee() {
-		return 0;
+		return noOfEmployee;
 	}
 
 	public void doDebit(double amount) {
