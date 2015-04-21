@@ -15,6 +15,13 @@ public abstract class Customer implements ICustomer, IObserver {
 	private ArrayList<Account> accountList;
 	private NotificationRule rule;
 
+	public static String NAME_FIELD = "name";
+	public static String STREET_FIELD = "street";
+	public static String CITY_FIELD = "city";
+	public static String STATE_FIELD = "state";
+	public static String ZIP_FIELD = "zip";
+	public static String EMAIL_FIELD = "email";
+
 	public Customer(HashMap<String, String> Data) {
 		customerCounter++;
 		setCustomerId("" + customerCounter);
