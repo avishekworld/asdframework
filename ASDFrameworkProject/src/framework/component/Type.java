@@ -1,15 +1,10 @@
 package framework.component;
 
-
-
-
-
-
-public abstract class Type
-{
+public abstract class Type {
 	private String typeName;
 	private double interestRate;
 	private double maxTransactionLimit;
+
 	
 
 	public Type(String typeName, double interestRate, double maxTransactionLimit) {
@@ -18,11 +13,14 @@ public abstract class Type
 		this.maxTransactionLimit = maxTransactionLimit;
 	}
 
-	public double getInterestRate(){
+
+
+	public double getInterestRate() {
+
 		return interestRate;
 	}
-	
-	public double getMaxTransactionLimit(){
+
+	public double getMaxTransactionLimit() {
 		return maxTransactionLimit;
 	}
 

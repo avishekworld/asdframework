@@ -14,10 +14,16 @@ public class Account extends Subject {
 	public List<Entry> transactionEntry;
 	public Date accountOpenDate;
 
+
 	public static String ACC_NUM_FIELD = "accountno";
 	public static String ACC_TYPE_FIELD = "accounttype";
 
+
 	public Account(HashMap<String, String> data) {
+		transactionEntry = new LinkedList<Entry>();
+
+		accountCounter++;
+		setAccountNumber("" + accountCounter);
 
 		accountNumber = data.get(Account.ACC_NUM_FIELD);
 		transactionEntry = new LinkedList<Entry>();
@@ -33,6 +39,9 @@ public class Account extends Subject {
 				getAccountNumber());
 		accountBalance = newEntry.getNewAmount();
 		transactionEntry.add(newEntry);
+		if (accountBalance < 0) {
+			notifyCustomer(newEntry);
+		}
 	}
 
 	public void doCredit(Double amount) {
@@ -40,6 +49,7 @@ public class Account extends Subject {
 				getAccountNumber());
 		accountBalance = newEntry.getNewAmount();
 		transactionEntry.add(newEntry);
+
 	}
 
 	public void addInterest() {
@@ -55,7 +65,9 @@ public class Account extends Subject {
 	}
 
 	public void notifyCustomer(Entry entry) {
-
+		System.out.println(" Account " + getAccountNumber()
+				+ " : balance is negative: $" + getCurrentBalance() + " !"
+				+ "Warning: negative balance");
 	}
 
 	public void generateReport(Date date1, Date date2, IReport reportType) {
@@ -139,5 +151,11 @@ public class Account extends Subject {
 
 	public void setAccountNumber(String accountNumber) {
 		this.accountNumber = accountNumber;
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return accountNumber + " -> " + accountBalance;
 	}
 }

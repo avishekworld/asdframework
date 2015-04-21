@@ -47,4 +47,16 @@ public class Company extends Customer implements ICompany {
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	public Account getLastAddedAccount() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getCustomerType() {
+		// TODO Auto-generated method stub
+		return "C";
+	}
 }

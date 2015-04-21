@@ -6,4 +6,6 @@ public interface ICustomer {
 	public void removeAccount(Account account);
 
 	public void sendEmail(Email email);
+
+	public String getCustomerType();
 }

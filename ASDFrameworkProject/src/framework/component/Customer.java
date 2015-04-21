@@ -2,6 +2,8 @@ package framework.component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 public abstract class Customer implements ICustomer, IObserver {
 	public static int customerCounter;
@@ -12,8 +14,9 @@ public abstract class Customer implements ICustomer, IObserver {
 	protected String zip;
 	protected String email;
 	private String customerId;
-	private ArrayList<Account> accountList;
+	protected ArrayList<Account> accountList;
 	protected NotificationRule notificationRule;
+	private NotificationRule rule;
 
 	public static String NAME_FIELD = "name";
 	public static String STREET_FIELD = "street";
@@ -25,6 +28,8 @@ public abstract class Customer implements ICustomer, IObserver {
 	public Customer(HashMap<String, String> Data) {
 		customerCounter++;
 		setCustomerId("" + customerCounter);
+
+		accountList = new ArrayList<Account>();
 
 		name = Data.get(Customer.NAME_FIELD);
 		street = Data.get(Customer.STREET_FIELD);
@@ -41,8 +46,18 @@ public abstract class Customer implements ICustomer, IObserver {
 
 	public abstract void sendEmail(Email email);
 
+	public abstract Account getLastAddedAccount();
+
 	public void update(Entry entry) {
 
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getCity() {
+		return city;
 	}
 
 	public String getCustomerId() {
@@ -53,17 +68,13 @@ public abstract class Customer implements ICustomer, IObserver {
 		this.customerId = customerId;
 	}
 
-	public String getName() {
-		return name;
-	}
+
 
 	public String getStreet() {
 		return street;
 	}
 
-	public String getCity() {
-		return city;
-	}
+
 
 	public String getState() {
 		return state;
@@ -77,5 +88,11 @@ public abstract class Customer implements ICustomer, IObserver {
 		return email;
 	}
 	
-	
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Customer: [ " + name + " , " + city + " ] ";
+	}
+
 }

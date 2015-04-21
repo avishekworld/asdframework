@@ -1,101 +1,110 @@
 package framework.view;
-import java.awt.BorderLayout;
-import java.awt.Container;
+
 import java.awt.Dimension;
+
 import java.awt.FlowLayout;
 import java.util.Collection;
 
+import java.util.Iterator;
+import java.util.List;
+
+
 import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import framework.component.Account;
+
+
+import framework.component.Customer;
+
 import framework.component.FinanceHandler;
 
 
-
-
-public class DefaultGui  extends AGui
-{
-    SymAction lSymAction;
-    DefaultTableModel model;
-    JButton JButton_PerAC;
+public class DefaultGui extends AGui {
+	String accountnr, clientName, street, city, zip, state, accountType,
+			clientType, amountDeposit;
+	boolean newaccount;
+	private Object rowdata[];
+	SymAction lSymAction;
+	DefaultTableModel model;
+	JButton JButton_PerAC;
 	JButton JButton_CompAC;
 	JButton JButton_Deposit;
 	JButton JButton_Withdraw;
 	JButton JButton_Addinterest;
-    
-	public DefaultGui(String title,FinanceHandler controller)
-	{
-		super(title,controller);
-		
-		
-		
+
+	public DefaultGui(String title, FinanceHandler controller) {
+		super(title, controller);
+		rowdata = new Object[6];
+
 	}
-	
-	public void generateCreationButtons()
-	{
+
+	public void generateCreationButtons() {
 		lSymAction = new SymAction();
-		
+
 		JButton_PerAC = new JButton("Add personal account");
-		JButton_PerAC.setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
+		JButton_PerAC.setPreferredSize(new Dimension(BUTTON_WIDTH,
+				BUTTON_HEIGHT));
 		JButton_CompAC = new JButton("Add company account");
-		JButton_CompAC.setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
-		
+		JButton_CompAC.setPreferredSize(new Dimension(BUTTON_WIDTH,
+				BUTTON_HEIGHT));
+
 		JButton_PerAC.addActionListener(lSymAction);
 		JButton_CompAC.addActionListener(lSymAction);
-		
+
 		creationButtonPanel.add(JButton_PerAC);
 		creationButtonPanel.add(JButton_CompAC);
-		
+
 	}
-	
-	public void generateOperationButtons()
-	{
-		
+
+	public void generateOperationButtons() {
+
 		JButton_Deposit = new JButton("Deposit");
-		JButton_Deposit.setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
+		JButton_Deposit.setPreferredSize(new Dimension(BUTTON_WIDTH,
+				BUTTON_HEIGHT));
 		JButton_Withdraw = new JButton("Withdraw");
-		JButton_Withdraw.setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
-	
+		JButton_Withdraw.setPreferredSize(new Dimension(BUTTON_WIDTH,
+				BUTTON_HEIGHT));
+
 		JButton_Deposit.addActionListener(lSymAction);
 		JButton_Withdraw.addActionListener(lSymAction);
-		
+
 		operationButtonPanel.add(JButton_Deposit);
 		operationButtonPanel.add(Box.createVerticalStrut(V_GAP));
 		operationButtonPanel.add(JButton_Withdraw);
 		operationButtonPanel.add(Box.createVerticalStrut(V_GAP));
 
 	}
-	
-	public DefaultTableModel getTableModel()
-	{
+
+	public DefaultTableModel getTableModel() {
 		model = new DefaultTableModel();
-		
-        model.addColumn("AccountNr");
-        model.addColumn("Name");
-        model.addColumn("City");
-        model.addColumn("P/C");
-        model.addColumn("Amount");
-        
-        return model;
+
+		model.addColumn("AccountNr");
+		model.addColumn("Name");
+		model.addColumn("City");
+		model.addColumn("P/C");
+		model.addColumn("Amount");
+
+		return model;
 	}
-	
-	public void getTableData()
-	{
-		
-	}
-	
-	class SymAction implements java.awt.event.ActionListener
-	{
-		public void actionPerformed(java.awt.event.ActionEvent event)
-		{
+
+	public void getTableData() {
+		// System.out.println("Come here 2");
+		/*
+		 * HashMap<String, Account> accountList =
+		 * controller.getModel().getAllAcounts();
+		 */
+
+
+
+		}
+
+
+
+	class SymAction implements java.awt.event.ActionListener {
+		public void actionPerformed(java.awt.event.ActionEvent event) {
 			Object object = event.getSource();
 			if (object == JButton_PerAC)
 				JButtonPerAC_actionPerformed(event);
@@ -108,9 +117,9 @@ public class DefaultGui  extends AGui
 			else if (object == JButton_Addinterest)
 				JButtonAddinterest_actionPerformed(event);
 
-			
 		}
 	}
+
 	
 	public void modelUpdated()
 	{
@@ -128,32 +137,29 @@ public class DefaultGui  extends AGui
 		}
 	}
 	
-	void JButtonPerAC_actionPerformed(java.awt.event.ActionEvent event)
-	{
+
+	void JButtonPerAC_actionPerformed(java.awt.event.ActionEvent event) {
+
 		/*
-		 JDialog_AddPAcc type object is for adding personal information
-		 construct a JDialog_AddPAcc type object 
-		 set the boundaries and show it 
-		*/
-		
+		 * JDialog_AddPAcc type object is for adding personal information
+		 * construct a JDialog_AddPAcc type object set the boundaries and show
+		 * it
+		 */
+
 		JDialog_AddPAcc pac = new JDialog_AddPAcc(myframe);
 		pac.setBounds(450, 20, 300, 330);
 		pac.show();
 
 
 
-       
-        
-    }
+	}
 
-	void JButtonCompAC_actionPerformed(java.awt.event.ActionEvent event)
-	{
+	void JButtonCompAC_actionPerformed(java.awt.event.ActionEvent event) {
 		/*
-		 construct a JDialog_AddCompAcc type object 
-		 set the boundaries and 
-		 show it 
-		*/
-		
+		 * construct a JDialog_AddCompAcc type object set the boundaries and
+		 * show it
+		 */
+
 		JDialog_AddCompAcc pac = new JDialog_AddCompAcc(myframe);
 		pac.setBounds(450, 20, 300, 330);
 		pac.show();
@@ -203,7 +209,7 @@ public class DefaultGui  extends AGui
 		    JDialog_Withdraw wd = new JDialog_Withdraw(myframe,accnr);
 		    wd.setBounds(430, 15, 275, 140);
 		    wd.show();
-    		
+        }
 		    // compute new amount
             /*long deposit = Long.parseLong(amountDeposit);
             String samount = (String)model.getValueAt(selection, 5);
@@ -213,19 +219,15 @@ public class DefaultGui  extends AGui
 		    if (newamount <0){
 		       JOptionPane.showMessageDialog(JButton_Withdraw, " Account "+accnr+" : balance is negative: $"+String.valueOf(newamount)+" !","Warning: negative balance",JOptionPane.WARNING_MESSAGE);
 		    }*/
-		}
-		
-		
-	}
-	
-	void JButtonAddinterest_actionPerformed(java.awt.event.ActionEvent event)
-	{
-		  JOptionPane.showMessageDialog(JButton_Addinterest, "Add interest to all accounts","Add interest to all accounts",JOptionPane.WARNING_MESSAGE);
-	    
+
 	}
 
 
+	void JButtonAddinterest_actionPerformed(java.awt.event.ActionEvent event) {
+		JOptionPane.showMessageDialog(JButton_Addinterest,
+				"Add interest to all accounts", "Add interest to all accounts",
+				JOptionPane.WARNING_MESSAGE);
 
-
+	}
 
 }
