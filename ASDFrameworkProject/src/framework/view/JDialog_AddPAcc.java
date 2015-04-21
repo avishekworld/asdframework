@@ -161,11 +161,9 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
 		guiData.put(Customer.EMAIL_FIELD,JTextField_EM.getText());
 		guiData.put(Personal.BIRTH_DATE_FIELD,JTextField_BD.getText());
 		
-		//String[] accountTypeString=SimpleTypeFactory.getDefaultTypeFactory().getTypes();
+		String type=SimpleTypeFactory.getDefaultTypeFactory().getTypes()[0];
 		
-		//guiData.put(Account.ACC_TYPE_FIELD,accountTypeString[0]);
-		
-		command=new PersonalAccountOpenCommand(parentframe.getController(), guiData);
+		command=new PersonalAccountOpenCommand(parentframe.getController(), guiData,SimpleTypeFactory.getDefaultTypeFactory().getType(type));
 		command.exceute();
 		
 		parentframe.modelUpdated();

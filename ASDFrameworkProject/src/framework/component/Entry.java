@@ -24,11 +24,11 @@ public abstract class Entry {
 	public abstract double getNewAmount();
 
 	public double getBeforBalance() {
-		return 0;
+		return beforeBalance;
 	}
 
 	public double getAfterBalance() {
-		return 0;
+		return afterBalance;
 	}
 
 	public Date getDate() {

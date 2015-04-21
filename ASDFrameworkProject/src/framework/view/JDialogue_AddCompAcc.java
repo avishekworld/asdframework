@@ -11,14 +11,14 @@ import framework.component.*;
 
 
 
-public class JDialog_AddCompAcc extends javax.swing.JDialog
+public class JDialogue_AddCompAcc extends javax.swing.JDialog
 {
     private AGui parentframe;
     HashMap<String, String> guiData;
     ICommand command;
 
     
-	public JDialog_AddCompAcc(AGui myframe)
+	public JDialogue_AddCompAcc(AGui myframe)
 	{
 		super(myframe);
 		parentframe=myframe;
@@ -160,7 +160,9 @@ public class JDialog_AddCompAcc extends javax.swing.JDialog
 		guiData.put(Company.NO_OF_EMPLOYEE_FIELD,JTextField_NoOfEmp.getText());
 		
 		
-		command=new CompanyAccountOpenCommand(parentframe.getController(), guiData);
+		String type=SimpleTypeFactory.getDefaultTypeFactory().getTypes()[0];
+		
+		command=new CompanyAccountOpenCommand(parentframe.getController(), guiData,SimpleTypeFactory.getDefaultTypeFactory().getType(type));
 		command.exceute();
 		
 		parentframe.modelUpdated();

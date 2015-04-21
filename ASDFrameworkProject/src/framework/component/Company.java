@@ -19,18 +19,6 @@ public class Company extends Customer implements ICompany {
 		return noOfEmployee;
 	}
 
-	public void doDebit(double amount) {
-
-	}
-
-	public void doCredit(double amount) {
-
-	}
-
-	public void addInterest() {
-
-	}
-
 
 	@Override
 	public Account getLastAddedAccount() {

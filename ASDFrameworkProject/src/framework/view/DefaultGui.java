@@ -24,9 +24,6 @@ import framework.component.TxtReport;
 
 
 public class DefaultGui extends AGui {
-	String accountnr, clientName, street, city, zip, state, accountType,
-			clientType, amountDeposit;
-	boolean newaccount;
 
 	SymAction lSymAction;
 	DefaultTableModel model;
@@ -170,7 +167,7 @@ public class DefaultGui extends AGui {
 		 * show it
 		 */
 
-		JDialog_AddCompAcc pac = new JDialog_AddCompAcc(myframe);
+		JDialogue_AddCompAcc pac = new JDialogue_AddCompAcc(myframe);
 		pac.setBounds(450, 20, 300, 400);
 		pac.show();
 
@@ -221,7 +218,7 @@ public class DefaultGui extends AGui {
 			getController().generateReport(startDate, new Date(), new TxtReport());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
         
 		   

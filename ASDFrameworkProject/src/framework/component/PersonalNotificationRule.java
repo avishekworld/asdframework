@@ -11,7 +11,7 @@ public class PersonalNotificationRule implements NotificationRule
 	
 	public boolean ruleMatch(Entry entry) {
 		
-		if(entry.getEntryAmount()>=notifiAmount)
+		if(entry.getEntryAmount()>=notifiAmount || entry.getAfterBalance()<0)
 			return true;
 		
 		else return false;

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Account extends Subject {
+public class Account {
 	public static int accountCounter = 2000;
 	protected Type accountType;
 	private double accountBalance;
@@ -17,7 +17,7 @@ public class Account extends Subject {
 	public static String ACC_NUM_FIELD = "accountno";
 	public static String ACC_TYPE_FIELD = "accounttype";
 
-	public Account(HashMap<String, String> data) {
+	public Account(HashMap<String, String> data, Type type) {
 		transactionEntry = new LinkedList<Entry>();
 
 		accountCounter++;
@@ -26,8 +26,7 @@ public class Account extends Subject {
 		accountNumber = data.get(Account.ACC_NUM_FIELD);
 		transactionEntry = new LinkedList<Entry>();
 
-		accountType = SimpleTypeFactory.getDefaultTypeFactory().getType(
-				"default");
+		accountType = type;
 
 		accountOpenDate = new Date();
 		// accountCounter++;

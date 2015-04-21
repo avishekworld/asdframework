@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-public abstract class Customer implements ICustomer, IObserver {
+public abstract class Customer implements ICustomer {
 	public static int customerCounter;
 	protected String name;
 	protected String street;
@@ -59,7 +59,7 @@ public abstract class Customer implements ICustomer, IObserver {
 
 	public void update(Entry entry) {
 		
-		String emailBody=entry.getEntryType()+" "+entry.getEntryAmount();
+		String emailBody=entry.getEntryType()+" "+entry.getEntryAmount()+" Current Balance "+entry.getAfterBalance();
 		
 		sendEmail(new Email(email, "Bank Notification", emailBody));
 
