@@ -37,7 +37,7 @@ public abstract class Account extends Subject {
 
 	}
 
-	public void generateReport(Date date1, Date date2) {
+	public void generateReport(Date date1, Date date2, IReport reportType) {
 
 	}
 
