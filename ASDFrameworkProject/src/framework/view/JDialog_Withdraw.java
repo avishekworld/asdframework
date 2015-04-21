@@ -42,7 +42,7 @@ public class JDialog_Withdraw extends javax.swing.JDialog
 		getContentPane().add(JLabel2);
 		JLabel2.setForeground(java.awt.Color.black);
 		JLabel2.setBounds(12,36,48,24);
-		//JTextField_Account_Number.setEditable(false);
+		JTextField_Account_Number.setEditable(false);
 		getContentPane().add(JTextField_Account_Number);
 		JTextField_Account_Number.setBounds(84,12,156,20);
 		getContentPane().add(JTextField_AMT);
@@ -97,6 +97,9 @@ public class JDialog_Withdraw extends javax.swing.JDialog
         
         command=new DebitCommand(parentframe.getController(), accountNumber, amount);
         command.exceute();
+        
+        parentframe.modelUpdated();
+        
 		dispose();
 	}
 

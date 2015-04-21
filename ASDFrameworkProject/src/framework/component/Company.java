@@ -11,11 +11,12 @@ public class Company extends Customer implements ICompany {
 		super(data);
 		noOfEmployee = Integer.parseInt(data.get(Company.NO_OF_EMPLOYEE_FIELD));
 		notificationRule = new CompanyNotificationRule();
+		kindOfAccount="company";
 
 	}
 
 	public int getNoOfEmployee() {
-		return 0;
+		return noOfEmployee;
 	}
 
 	public void doDebit(double amount) {
@@ -30,28 +31,10 @@ public class Company extends Customer implements ICompany {
 
 	}
 
-	@Override
-	public void sendEmail(Email email) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void addAccount(Account account) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void removeAccount(Account account) {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public Account getLastAddedAccount() {
-		// TODO Auto-generated method stub
-		return null;
+		return super.accountList.get(super.accountList.size() - 1);
 	}
 
 	@Override

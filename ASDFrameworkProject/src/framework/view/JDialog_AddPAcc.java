@@ -30,14 +30,6 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
 		getContentPane().setLayout(null);
 		setSize(283,400);
 		setVisible(false);
-		JRadioButton_Chk.setText("Checkings");
-		JRadioButton_Chk.setActionCommand("Checkings");
-		getContentPane().add(JRadioButton_Chk);
-		JRadioButton_Chk.setBounds(36,0,84,24);
-		JRadioButton_Sav.setText("Savings");
-		JRadioButton_Sav.setActionCommand("Savings");
-		getContentPane().add(JRadioButton_Sav);
-		JRadioButton_Sav.setBounds(36,24,84,24);
 		JLabel1.setText("Name");
 		getContentPane().add(JLabel1);
 		JLabel1.setForeground(java.awt.Color.black);
@@ -97,21 +89,18 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
 		//}}
 	
 		//{{REGISTER_LISTENERS
-		SymMouse aSymMouse = new SymMouse();
-		JRadioButton_Chk.addMouseListener(aSymMouse);
-		JRadioButton_Sav.addMouseListener(aSymMouse);
 		SymAction lSymAction = new SymAction();
 		JButton_OK.addActionListener(lSymAction);
 		JButton_Cancel.addActionListener(lSymAction);
 		//}}
+		
+		setDefaulFormtData();
 	}
 
 
 
 
 	//{{DECLARE_CONTROLS
-	javax.swing.JRadioButton JRadioButton_Chk = new javax.swing.JRadioButton();
-	javax.swing.JRadioButton JRadioButton_Sav = new javax.swing.JRadioButton();
 	javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
 	javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
 	javax.swing.JLabel JLabel3 = new javax.swing.JLabel();
@@ -133,34 +122,20 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
 	//}}
 
 
-	class SymMouse extends java.awt.event.MouseAdapter
+
+	public void setDefaulFormtData()
 	{
-		public void mouseClicked(java.awt.event.MouseEvent event)
-		{
-			Object object = event.getSource();
-			if (object == JRadioButton_Chk)
-				JRadioButtonChk_mouseClicked(event);
-			else if (object == JRadioButton_Sav)
-				JRadioButtonSav_mouseClicked(event);
-		}
+		JTextField_ACNR.getText();
+		
+		JTextField_NAME.setText("Dummy Name");
+		JTextField_STR.setText("1000 north ");
+		JTextField_CT.setText("Fairfield");
+		JTextField_ZIP.setText("52557");
+		JTextField_ST.setText("Iowa");
+		JTextField_EM.setText("name@email.com");
+		JTextField_BD.setText("10/11/1988");
 	}
 
-	void JRadioButtonChk_mouseClicked(java.awt.event.MouseEvent event)
-	{
-		//When Checking radio is clicked make this radio on 
-		//and make Saving account radio off
-		JRadioButton_Chk.setSelected(true);
-		JRadioButton_Sav.setSelected(false);
-	}
-
-	void JRadioButtonSav_mouseClicked(java.awt.event.MouseEvent event)
-	{
-		//When Saving radio is clicked make this radio on 
-		//and make Checking account radio off
-		JRadioButton_Chk.setSelected(false);
-		JRadioButton_Sav.setSelected(true);
-	 
-	}
 
 	class SymAction implements java.awt.event.ActionListener
 	{
@@ -183,7 +158,7 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
 		guiData.put(Customer.CITY_FIELD,JTextField_CT.getText());
 		guiData.put(Customer.ZIP_FIELD,JTextField_ZIP.getText());
 		guiData.put(Customer.STATE_FIELD,JTextField_ST.getText());
-		
+		guiData.put(Customer.EMAIL_FIELD,JTextField_EM.getText());
 		guiData.put(Personal.BIRTH_DATE_FIELD,JTextField_BD.getText());
 		
 		//String[] accountTypeString=SimpleTypeFactory.getDefaultTypeFactory().getTypes();

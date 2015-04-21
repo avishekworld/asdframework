@@ -3,8 +3,17 @@ package framework.component;
 
 public class PersonalNotificationRule implements NotificationRule
 {
-	public Object amountLimit;
+	public double notifiAmount;
+	
+	public PersonalNotificationRule(double notifiAmount) {
+		this.notifiAmount=notifiAmount;
+	}
+	
 	public boolean ruleMatch(Entry entry) {
-		return false;
+		
+		if(entry.getEntryAmount()>=notifiAmount)
+			return true;
+		
+		else return false;
 	}
 }

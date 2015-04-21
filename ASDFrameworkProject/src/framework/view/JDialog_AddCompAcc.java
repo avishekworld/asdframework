@@ -31,14 +31,6 @@ public class JDialog_AddCompAcc extends javax.swing.JDialog
 		getContentPane().setLayout(null);
 		setSize(298,400);
 		setVisible(false);
-		JRadioButton_Chk.setText("Checkings");
-		JRadioButton_Chk.setActionCommand("Checkings");
-		getContentPane().add(JRadioButton_Chk);
-		JRadioButton_Chk.setBounds(36,12,84,24);
-		JRadioButton_Sav.setText("Savings");
-		JRadioButton_Sav.setActionCommand("Savings");
-		getContentPane().add(JRadioButton_Sav);
-		JRadioButton_Sav.setBounds(36,36,84,24);
 		JLabel1.setText("Name");
 		getContentPane().add(JLabel1);
 		JLabel1.setForeground(java.awt.Color.black);
@@ -102,12 +94,13 @@ public class JDialog_AddCompAcc extends javax.swing.JDialog
 		JButton_OK.addActionListener(lSymAction);
 		JButton_Calcel.addActionListener(lSymAction);
 		//}}
+		
+		setDefaulFormtData();
 	}
 
 
 	//{{DECLARE_CONTROLS
-	javax.swing.JRadioButton JRadioButton_Chk = new javax.swing.JRadioButton();
-	javax.swing.JRadioButton JRadioButton_Sav = new javax.swing.JRadioButton();
+
 	javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
 	javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
 	javax.swing.JLabel JLabel3 = new javax.swing.JLabel();
@@ -129,6 +122,19 @@ public class JDialog_AddCompAcc extends javax.swing.JDialog
 	//}}
 
 
+	public void setDefaulFormtData()
+	{
+		JTextField_ACNR.getText();
+		
+		JTextField_NAME.setText("Dummy Name");
+		JTextField_STR.setText("1000 north ");
+		JTextField_CT.setText("Fairfield");
+		JTextField_ZIP.setText("52557");
+		JTextField_ST.setText("Iowa");
+		JTextField_EM.setText("name@email.com");
+		JTextField_NoOfEmp.setText("8");
+	}
+	
 	class SymAction implements java.awt.event.ActionListener
 	{
 		public void actionPerformed(java.awt.event.ActionEvent event)
@@ -150,14 +156,16 @@ public class JDialog_AddCompAcc extends javax.swing.JDialog
 		guiData.put(Company.CITY_FIELD,JTextField_CT.getText());
 		guiData.put(Company.ZIP_FIELD,JTextField_ZIP.getText());
 		guiData.put(Company.STATE_FIELD,JTextField_ST.getText());
-		
+		guiData.put(Customer.EMAIL_FIELD,JTextField_EM.getText());
 		guiData.put(Company.NO_OF_EMPLOYEE_FIELD,JTextField_NoOfEmp.getText());
 		
 		
-		command=new PersonalAccountOpenCommand(parentframe.getController(), guiData);
+		command=new CompanyAccountOpenCommand(parentframe.getController(), guiData);
 		command.exceute();
 		
-	   dispose();
+		parentframe.modelUpdated();
+		
+	    dispose();
 			 
 	}
 
