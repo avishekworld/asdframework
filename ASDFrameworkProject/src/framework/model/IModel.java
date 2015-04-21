@@ -1,6 +1,7 @@
 package framework.model;
 
-import java.util.HashMap;
+
+import java.util.*;
 
 import framework.component.Account;
 import framework.component.Customer;
@@ -12,9 +13,11 @@ public interface IModel {
 
 	public void addCustomer(Customer customer);
 
+	public void addAccount(Account account);
+
 	public void addInterest();
 
-	public HashMap<String, Account> getAllAcounts();
+	public List<Account> getAllAcounts();
 
-	public HashMap<String, Customer> getAllCustomers();
+	public List<Customer> getAllCustomers();
 }

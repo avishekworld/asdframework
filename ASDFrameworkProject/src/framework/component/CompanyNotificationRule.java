@@ -1,9 +1,8 @@
 package framework.component;
 
+public class CompanyNotificationRule implements NotificationRule {
 
-public class PersonalRule implements NotificationRule
-{
-	public Object amountLimit;
+	@Override
 	public boolean ruleMatch(Entry entry) {
 		return false;
 	}
