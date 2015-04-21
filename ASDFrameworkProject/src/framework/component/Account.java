@@ -14,10 +14,8 @@ public class Account extends Subject {
 	public List<Entry> transactionEntry;
 	public Date accountOpenDate;
 
-
 	public static String ACC_NUM_FIELD = "accountno";
 	public static String ACC_TYPE_FIELD = "accounttype";
-
 
 	public Account(HashMap<String, String> data) {
 		transactionEntry = new LinkedList<Entry>();
@@ -27,46 +25,42 @@ public class Account extends Subject {
 
 		accountNumber = data.get(Account.ACC_NUM_FIELD);
 		transactionEntry = new LinkedList<Entry>();
-		
-		accountType=SimpleTypeFactory.getDefaultTypeFactory().getType("default");
-		
-		accountOpenDate=new Date();
-		//accountCounter++;
-		//setAccountNumber("" + accountCounter);
+
+		accountType = SimpleTypeFactory.getDefaultTypeFactory().getType(
+				"default");
+
+		accountOpenDate = new Date();
+		// accountCounter++;
+		// setAccountNumber("" + accountCounter);
 	}
 
 	public void doDebit(Double amount) {
 		Entry newEntry = new DebitEntry(getCurrentBalance(), amount,
 				getAccountNumber());
-		
+
 		accountBalance = newEntry.getNewAmount();
-		
+
 		transactionEntry.add(newEntry);
-		
-		NotificationRule notificationRule=owner.getNotificationRule();
-		
-		if(notificationRule.ruleMatch(newEntry))
-		{
+
+		NotificationRule notificationRule = owner.getNotificationRule();
+
+		if (notificationRule.ruleMatch(newEntry)) {
 			owner.update(newEntry);
 		}
-		
-		
-		
-		
+
 	}
 
 	public void doCredit(Double amount) {
 		Entry newEntry = new CreditEntry(getCurrentBalance(), amount,
 				getAccountNumber());
-		
+
 		accountBalance = newEntry.getNewAmount();
-		
+
 		transactionEntry.add(newEntry);
 
-		NotificationRule notificationRule=owner.getNotificationRule();
-		
-		if(notificationRule.ruleMatch(newEntry))
-		{
+		NotificationRule notificationRule = owner.getNotificationRule();
+
+		if (notificationRule.ruleMatch(newEntry)) {
 			owner.update(newEntry);
 		}
 	}
@@ -104,7 +98,7 @@ public class Account extends Subject {
 			}
 		}// for
 
-		reportType.Generate(reportEntryList);
+		reportType.Generate(getAccountNumber(), reportEntryList);
 	}
 
 	public double getTotalDebitAmount(Date date1, Date date2) {
@@ -153,17 +147,15 @@ public class Account extends Subject {
 	public String getAccountNumber() {
 		return accountNumber;
 	}
-	
+
 	public Customer getOwner() {
 		return owner;
 	}
 
-	
 	public Type getAccountType() {
 		return accountType;
 	}
 
-	
 	public double getAccountBalance() {
 		return accountBalance;
 	}
@@ -181,6 +173,5 @@ public class Account extends Subject {
 	public void setOwner(Customer owner) {
 		this.owner = owner;
 	}
-	
-	
+
 }

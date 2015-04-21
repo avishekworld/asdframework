@@ -12,14 +12,25 @@ public class TxtReport implements IReport {
 	String dirPath = "Reports";
 	BufferedWriter output;
 
-	public TxtReport(String theFileName) throws IOException {
+	public TxtReport() throws IOException {
 		// TODO Auto-generated constructor stub
+
+	}
+
+	@Override
+	public void Generate(String accountNumber, List<Entry> inputListOfEntry) {
+		// TODO Auto-generated method stub
 		File file = new File(dirPath);
 		if (file.exists()) {
 			// System.out.println("File Exists");
-			file = new File(dirPath + "/" + theFileName + ".txt");
+			file = new File(dirPath + "/" + accountNumber + ".txt");
 			System.out.println("Report Created @ " + file.getAbsolutePath());
-			output = new BufferedWriter(new FileWriter(file, true));
+			try {
+				output = new BufferedWriter(new FileWriter(file, true));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else {
 			boolean wasDirecotyMade = file.mkdirs();
 			if (wasDirecotyMade) {
@@ -31,11 +42,9 @@ public class TxtReport implements IReport {
 			}
 		}
 
-	}
-
-	@Override
-	public void Generate(List<Entry> inputListOfEntry) {
-		// TODO Auto-generated method stub
+		for (Entry e : inputListOfEntry) {
+			writeEntryOnFile(e);
+		}
 
 	}
 
