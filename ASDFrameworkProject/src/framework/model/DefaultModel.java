@@ -30,12 +30,14 @@ public class DefaultModel implements IModel {
 	}
 
 	public void addInterest() {
-		Iterator i = accountList.entrySet().iterator();
-		while (i.hasNext()) {
-			String key = i.next().toString();
-			Account account = accountList.get(key);
-			account.addInterest();
-		}
+			
+			List<Account> allAccounts=getAllAcounts();
+			
+			for(Account account:allAccounts)
+			{
+				account.addInterest();
+			}
+		
 	}
 
 	public List<Account> getAllAcounts() {

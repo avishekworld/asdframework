@@ -3,7 +3,7 @@ package framework.component;
 public class DebitEntry extends Entry {
 
 	DebitEntry(double theBalance, double theAmount, String theIssuerName) {
-		super("DebitEntry", theBalance, theAmount, theIssuerName);
+		super("Debit", theBalance, theAmount, theIssuerName);
 		// TODO Auto-generated constructor stub
 	}
 
