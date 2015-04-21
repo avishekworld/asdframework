@@ -1,7 +1,8 @@
 package framework.component;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 public abstract class Customer implements ICustomer, IObserver {
 	public static int customerCounter;
@@ -12,7 +13,7 @@ public abstract class Customer implements ICustomer, IObserver {
 	protected String zip;
 	protected String email;
 	private String customerId;
-	private ArrayList<Account> accountList;
+	protected List<Account> accountList;
 	private NotificationRule rule;
 
 	public static String NAME_FIELD = "name";
@@ -25,6 +26,8 @@ public abstract class Customer implements ICustomer, IObserver {
 	public Customer(HashMap<String, String> Data) {
 		customerCounter++;
 		setCustomerId("" + customerCounter);
+
+		accountList = new LinkedList<Account>();
 
 		name = Data.get(Customer.NAME_FIELD);
 		street = Data.get(Customer.STREET_FIELD);
@@ -41,8 +44,18 @@ public abstract class Customer implements ICustomer, IObserver {
 
 	public abstract void sendEmail(Email email);
 
+	public abstract Account getLastAddedAccount();
+
 	public void update(Entry entry) {
 
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getCity() {
+		return city;
 	}
 
 	public String getCustomerId() {
@@ -51,5 +64,11 @@ public abstract class Customer implements ICustomer, IObserver {
 
 	private void setCustomerId(String customerId) {
 		this.customerId = customerId;
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Customer: [ " + name + " , " + city + " ] ";
 	}
 }

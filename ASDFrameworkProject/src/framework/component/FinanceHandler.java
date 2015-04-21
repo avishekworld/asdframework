@@ -1,21 +1,35 @@
 package framework.component;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-import framework.model.*;
-import framework.view.*;
+import framework.model.DefaultModel;
+import framework.model.IModel;
+import framework.view.AGui;
+import framework.view.DefaultGui;
 
 public class FinanceHandler {
 	protected String name;
 	protected IModel model;
+
+	public IModel getModel() {
+		return model;
+	}
+
 	protected List<Customer> customerList;
+
+	public List<Customer> getCustomerList() {
+		return customerList;
+	}
+
 	protected AGui gui;
-	
-	
+
 	public void addCustomer(Customer customer) {
 		customerList.add(customer);
+		Account account = customer.getLastAddedAccount();
+		model.addAccount(account);
 	}
 
 	public void addInterest() {
@@ -49,16 +63,34 @@ public class FinanceHandler {
 		account.generateReport(fromDate, toDate, reportType);
 	}
 
-	
 	public void setGui(AGui gui) {
 		this.gui = gui;
 	}
 
 	public static void main(String[] args) {
-		
-		IModel model=new DefaultModel();
-		FinanceHandler controller=new FinanceHandler(model);
-		AGui gui=new DefaultGui("Financial App",controller);
+
+		IModel model = new DefaultModel();
+		FinanceHandler controller = new FinanceHandler(model);
+		HashMap<String, String> guiData = new HashMap<String, String>();
+
+		guiData.put(Account.ACC_NUM_FIELD, "1234");
+
+		guiData.put(Customer.NAME_FIELD, "Sajedul");
+		guiData.put(Customer.STREET_FIELD, "1000 N 4th");
+		guiData.put(Customer.CITY_FIELD, "Fairfield");
+		guiData.put(Customer.ZIP_FIELD, "52557");
+		guiData.put(Customer.STATE_FIELD, "Iowa");
+
+		guiData.put(Personal.BIRTH_DATE_FIELD, "02/22/1999");
+
+		ICommand command = new PersonalAccountOpenCommand(controller, guiData);
+		command.exceute();
+
+		Account account = new Account(guiData);
+		model.addAccount(account);
+
+		AGui gui = new DefaultGui("Financial App", controller);
 		controller.setGui(gui);
 	}
+
 }
