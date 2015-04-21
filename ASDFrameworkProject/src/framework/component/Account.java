@@ -14,10 +14,8 @@ public class Account extends Subject {
 	public List<Entry> transactionEntry;
 	public Date accountOpenDate;
 
-
 	public static String ACC_NUM_FIELD = "accountno";
 	public static String ACC_TYPE_FIELD = "accounttype";
-
 
 	public Account(HashMap<String, String> data) {
 		transactionEntry = new LinkedList<Entry>();
@@ -27,11 +25,12 @@ public class Account extends Subject {
 
 		accountNumber = data.get(Account.ACC_NUM_FIELD);
 		transactionEntry = new LinkedList<Entry>();
-		
-		accountType=SimpleTypeFactory.getDefaultTypeFactory().getType("default");
-		
-		//accountCounter++;
-		//setAccountNumber("" + accountCounter);
+
+		accountType = SimpleTypeFactory.getDefaultTypeFactory().getType(
+				"default");
+
+		// accountCounter++;
+		// setAccountNumber("" + accountCounter);
 	}
 
 	public void doDebit(Double amount) {
@@ -134,17 +133,15 @@ public class Account extends Subject {
 	public String getAccountNumber() {
 		return accountNumber;
 	}
-	
+
 	public Customer getOwner() {
 		return owner;
 	}
 
-	
 	public Type getAccountType() {
 		return accountType;
 	}
 
-	
 	public double getAccountBalance() {
 		return accountBalance;
 	}

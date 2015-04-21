@@ -54,4 +54,12 @@ public abstract class Entry {
 	public void setEntryType(String type) {
 		this.type = type;
 	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "[ " + date.toString() + "\t " + beforeBalance + "\t "
+				+ issuerName + "\t " + type + "\t " + amount + "\t "
+				+ getNewAmount() + " ]";
+	}
 }
