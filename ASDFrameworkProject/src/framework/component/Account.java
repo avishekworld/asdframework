@@ -91,7 +91,7 @@ public class Account {
 		date2.setMinutes(59);
 		date2.setSeconds(59);
 		for (Entry e : transactionEntry) {
-			Date ev=e.getDate();
+			Date ev = e.getDate();
 			if ((date1.equals(e.getDate()) || date2.equals(e.getDate()))
 					|| (date1.before(e.getDate()) && date2.after(e.getDate()))) {
 				reportEntryList.add(e);

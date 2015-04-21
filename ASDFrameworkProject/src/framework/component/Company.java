@@ -11,8 +11,7 @@ public class Company extends Customer implements ICompany {
 		super(data);
 		noOfEmployee = Integer.parseInt(data.get(Company.NO_OF_EMPLOYEE_FIELD));
 		notificationRule = new CompanyNotificationRule();
-		kindOfAccount="company";
-
+		kindOfAccount = "company";
 	}
 
 	public int getNoOfEmployee() {
@@ -23,6 +22,7 @@ public class Company extends Customer implements ICompany {
 	@Override
 	public Account getLastAddedAccount() {
 		return super.accountList.get(super.accountList.size() - 1);
+
 	}
 
 	@Override
