@@ -94,16 +94,6 @@ public class DefaultGui extends AGui {
 		return model;
 	}
 
-	public void getTableData() {
-		// System.out.println("Come here 2");
-		/*
-		 * HashMap<String, Account> accountList =
-		 * controller.getModel().getAllAcounts();
-		 */
-
-
-
-		}
 
 
 
@@ -153,7 +143,7 @@ public class DefaultGui extends AGui {
 		 * it
 		 */
 
-		JDialog_AddPAcc pac = new JDialog_AddPAcc(myframe);
+		JDialogAddPerAcc pac = new JDialogAddPerAcc(myframe);
 		pac.setBounds(450, 20, 300, 400);
 		pac.show();
 
@@ -167,7 +157,7 @@ public class DefaultGui extends AGui {
 		 * show it
 		 */
 
-		JDialogue_AddCompAcc pac = new JDialogue_AddCompAcc(myframe);
+		JDialogAddComAcc pac = new JDialogAddComAcc(myframe);
 		pac.setBounds(450, 20, 300, 400);
 		pac.show();
 
