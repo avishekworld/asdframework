@@ -22,4 +22,8 @@ public abstract class Customer implements ICustomer, IObserver {
 	public void update(Entry entry) {
 
 	}
+
+	public String getCustomerId() {
+		return customerId;
+	}
 }
