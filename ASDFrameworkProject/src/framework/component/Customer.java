@@ -16,8 +16,7 @@ public abstract class Customer implements ICustomer, IObserver {
 	private String customerId;
 	protected ArrayList<Account> accountList;
 	protected NotificationRule notificationRule;
-	private NotificationRule rule;
-
+	protected String kindOfAccount;
 	public static String NAME_FIELD = "name";
 	public static String STREET_FIELD = "street";
 	public static String CITY_FIELD = "city";
@@ -40,9 +39,16 @@ public abstract class Customer implements ICustomer, IObserver {
 
 	}
 
-	public abstract void addAccount(Account account);
+	public void addAccount(Account account)
+	{
+		account.setOwner(this);
+		accountList.add(account);
+	}
 
-	public abstract void removeAccount(Account account);
+	public  void removeAccount(Account account)
+	{
+		accountList.remove(account);
+	}
 
 	public abstract void sendEmail(Email email);
 
@@ -88,6 +94,11 @@ public abstract class Customer implements ICustomer, IObserver {
 		return email;
 	}
 	
+	
+
+	public String getKindOfAccount() {
+		return kindOfAccount;
+	}
 
 	@Override
 	public String toString() {

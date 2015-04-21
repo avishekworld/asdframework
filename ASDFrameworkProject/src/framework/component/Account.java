@@ -30,6 +30,7 @@ public class Account extends Subject {
 		
 		accountType=SimpleTypeFactory.getDefaultTypeFactory().getType("default");
 		
+		accountOpenDate=new Date();
 		//accountCounter++;
 		//setAccountNumber("" + accountCounter);
 	}
@@ -158,4 +159,10 @@ public class Account extends Subject {
 		// TODO Auto-generated method stub
 		return accountNumber + " -> " + accountBalance;
 	}
+
+	public void setOwner(Customer owner) {
+		this.owner = owner;
+	}
+	
+	
 }

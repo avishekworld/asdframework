@@ -20,16 +20,10 @@ public class FinanceHandler {
 		return model;
 	}
 
-	protected List<Customer> customerList;
-
-	public List<Customer> getCustomerList() {
-		return customerList;
-	}
-
 	protected AGui gui;
 
 	public void addCustomer(Customer customer) {
-		customerList.add(customer);
+		model.addCustomer(customer);
 		Account account = customer.getLastAddedAccount();
 		model.addAccount(account);
 	}
@@ -38,29 +32,18 @@ public class FinanceHandler {
 		model.addInterest();
 	}
 
-	public Customer getCustomer(String customerId) {
-		for (Customer customer : customerList) {
-			if (customer.getCustomerId().equals(customerId))
-				return customer;
-		}
-		return null;
-	}
 
 	public Account getAccount(String accountId) {
 		
-		//Account account=model.getAllAcounts().get(accountId);
-		
-		return null;
-		//return model.getAllAcounts().get(accountId);
+		return model.getAccount(accountId);
 	}
 	
 	public List<Account> getAllAccount() {
 		return model.getAllAcounts();
 	}
 
-	public FinanceHandler(IModel iModel) {
-		this.model = iModel;
-		customerList = new LinkedList<Customer>();
+	public FinanceHandler() {
+	
 	}
 
 	public void generateReport(Date fromDate, Date toDate, IReport reportType) {
@@ -76,12 +59,26 @@ public class FinanceHandler {
 	public void setGui(AGui gui) {
 		this.gui = gui;
 	}
+	
+
+	public void setModel(IModel model) {
+		this.model = model;
+	}
 
 	public static void main(String[] args) {
 
+		FinanceHandler controller = new FinanceHandler();
+		
 		IModel model = new DefaultModel();
-		FinanceHandler controller = new FinanceHandler(model);
-		HashMap<String, String> guiData = new HashMap<String, String>();
+		AGui gui = new DefaultGui("Financial App", controller);
+		
+		controller.setModel(model);
+		controller.setGui(gui);
+		
+		
+		
+		
+		/*HashMap<String, String> guiData = new HashMap<String, String>();
 
 		guiData.put(Account.ACC_NUM_FIELD, "1234");
 
@@ -100,7 +97,7 @@ public class FinanceHandler {
 		model.addAccount(account);
 
 		AGui gui = new DefaultGui("Financial App", controller);
-		controller.setGui(gui);
+		controller.setGui(gui);*/
 	}
 
 }

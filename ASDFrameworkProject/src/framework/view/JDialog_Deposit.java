@@ -78,11 +78,14 @@ public class JDialog_Deposit extends javax.swing.JDialog {
 	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
 		String accountNumber = JTextField_Account_Number.getText();
 		String amount = JTextField_Deposit.getText();
+		
 		// System.out.println("" + amount);
 		command = new CreditCommand(parentframe.getController(), accountNumber,
 				amount);
 		command.exceute();
 
+		parentframe.modelUpdated();
+		
 		dispose();
 	}
 

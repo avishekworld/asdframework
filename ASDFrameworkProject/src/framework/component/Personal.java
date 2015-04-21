@@ -10,10 +10,11 @@ public class Personal extends Customer implements IPerson {
 	public Personal(HashMap<String, String> data) {
 		super(data);
 
-		
 		birthdate=new Date(data.get(Personal.BIRTH_DATE_FIELD));
 		
 		notificationRule=new PersonalNotificationRule();
+		
+		kindOfAccount="personal";
 
 	}
 
@@ -23,17 +24,7 @@ public class Personal extends Customer implements IPerson {
 		return birthdate;
 	}
 
-	@Override
-	public void addAccount(Account account) {
-		// TODO Auto-generated method stub
-		super.accountList.add(account);
-	}
 
-	@Override
-	public void removeAccount(Account account) {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public void sendEmail(Email email) {

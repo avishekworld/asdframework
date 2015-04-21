@@ -30,14 +30,6 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
 		getContentPane().setLayout(null);
 		setSize(283,400);
 		setVisible(false);
-		JRadioButton_Chk.setText("Checkings");
-		JRadioButton_Chk.setActionCommand("Checkings");
-		getContentPane().add(JRadioButton_Chk);
-		JRadioButton_Chk.setBounds(36,0,84,24);
-		JRadioButton_Sav.setText("Savings");
-		JRadioButton_Sav.setActionCommand("Savings");
-		getContentPane().add(JRadioButton_Sav);
-		JRadioButton_Sav.setBounds(36,24,84,24);
 		JLabel1.setText("Name");
 		getContentPane().add(JLabel1);
 		JLabel1.setForeground(java.awt.Color.black);
@@ -78,6 +70,7 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
 		JTextField_ZIP.setBounds(84,180,156,20);
 		getContentPane().add(JTextField_BD);
 		JTextField_BD.setBounds(84,204,156,20);
+		JTextField_BD.setText("10/11/1988");
 		getContentPane().add(JTextField_EM);
 		JTextField_EM.setBounds(84,228,156,20);
 		JButton_OK.setText("OK");
@@ -97,9 +90,6 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
 		//}}
 	
 		//{{REGISTER_LISTENERS
-		SymMouse aSymMouse = new SymMouse();
-		JRadioButton_Chk.addMouseListener(aSymMouse);
-		JRadioButton_Sav.addMouseListener(aSymMouse);
 		SymAction lSymAction = new SymAction();
 		JButton_OK.addActionListener(lSymAction);
 		JButton_Cancel.addActionListener(lSymAction);
@@ -110,8 +100,6 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
 
 
 	//{{DECLARE_CONTROLS
-	javax.swing.JRadioButton JRadioButton_Chk = new javax.swing.JRadioButton();
-	javax.swing.JRadioButton JRadioButton_Sav = new javax.swing.JRadioButton();
 	javax.swing.JLabel JLabel1 = new javax.swing.JLabel();
 	javax.swing.JLabel JLabel2 = new javax.swing.JLabel();
 	javax.swing.JLabel JLabel3 = new javax.swing.JLabel();
@@ -133,34 +121,9 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
 	//}}
 
 
-	class SymMouse extends java.awt.event.MouseAdapter
-	{
-		public void mouseClicked(java.awt.event.MouseEvent event)
-		{
-			Object object = event.getSource();
-			if (object == JRadioButton_Chk)
-				JRadioButtonChk_mouseClicked(event);
-			else if (object == JRadioButton_Sav)
-				JRadioButtonSav_mouseClicked(event);
-		}
-	}
 
-	void JRadioButtonChk_mouseClicked(java.awt.event.MouseEvent event)
-	{
-		//When Checking radio is clicked make this radio on 
-		//and make Saving account radio off
-		JRadioButton_Chk.setSelected(true);
-		JRadioButton_Sav.setSelected(false);
-	}
 
-	void JRadioButtonSav_mouseClicked(java.awt.event.MouseEvent event)
-	{
-		//When Saving radio is clicked make this radio on 
-		//and make Checking account radio off
-		JRadioButton_Chk.setSelected(false);
-		JRadioButton_Sav.setSelected(true);
-	 
-	}
+
 
 	class SymAction implements java.awt.event.ActionListener
 	{
