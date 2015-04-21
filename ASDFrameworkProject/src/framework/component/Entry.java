@@ -1,5 +1,6 @@
 package framework.component;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public abstract class Entry {
@@ -10,8 +11,18 @@ public abstract class Entry {
 	private double amount;
 	private String type;
 
-	public double getAmount() {
-		return 0;
+	Entry(String entryType, double theBalance, double theAmount,
+			String theIssuerName) {
+		type = entryType;
+		date = Calendar.getInstance().getTime();
+		IssuerName = theIssuerName;
+		beforeBalance = theBalance;
+		amount = theAmount;
+		afterBalance = beforeBalance + amount;
+	}
+
+	public double getNewAmount() {
+		return afterBalance;
 	}
 
 	public double getBeforBalance() {
