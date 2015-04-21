@@ -2,10 +2,8 @@ package framework.component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 
-public abstract class Customer implements ICustomer, IObserver {
+public abstract class Customer implements ICustomer {
 	public static int customerCounter;
 	protected String name;
 	protected String street;
@@ -39,28 +37,27 @@ public abstract class Customer implements ICustomer, IObserver {
 
 	}
 
-	public void addAccount(Account account)
-	{
+	public void addAccount(Account account) {
 		account.setOwner(this);
 		accountList.add(account);
 	}
 
-	public  void removeAccount(Account account)
-	{
+	public void removeAccount(Account account) {
 		accountList.remove(account);
 	}
 
-	public void sendEmail(Email email)
-	{
+	public void sendEmail(Email email) {
 		PopServer.sendEmail(email);
 	}
 
-	public abstract Account getLastAddedAccount();
+	public Account getLastAddedAccount() {
+		return accountList.get(accountList.size() - 1);
+	}
 
 	public void update(Entry entry) {
-		
-		String emailBody=entry.getEntryType()+" "+entry.getNewAmount();
-		
+
+		String emailBody = entry.getEntryType() + " " + entry.getNewAmount();
+
 		sendEmail(new Email(email, "Bank Notification", emailBody));
 
 	}
@@ -81,13 +78,9 @@ public abstract class Customer implements ICustomer, IObserver {
 		this.customerId = customerId;
 	}
 
-
-
 	public String getStreet() {
 		return street;
 	}
-
-
 
 	public String getState() {
 		return state;
@@ -100,8 +93,6 @@ public abstract class Customer implements ICustomer, IObserver {
 	public String getEmail() {
 		return email;
 	}
-	
-	
 
 	public String getKindOfAccount() {
 		return kindOfAccount;
@@ -116,7 +107,5 @@ public abstract class Customer implements ICustomer, IObserver {
 	public NotificationRule getNotificationRule() {
 		return notificationRule;
 	}
-	
-	
 
 }
