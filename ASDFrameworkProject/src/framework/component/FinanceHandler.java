@@ -4,15 +4,16 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-import framework.model.IModel;
-import framework.view.IGui;
+import framework.model.*;
+import framework.view.*;
 
 public class FinanceHandler {
 	protected String name;
 	protected IModel model;
 	protected List<Customer> customerList;
-	protected IGui iGui;
-
+	protected AGui gui;
+	
+	
 	public void addCustomer(Customer customer) {
 		customerList.add(customer);
 	}
@@ -33,9 +34,8 @@ public class FinanceHandler {
 		return model.getAllAcounts().get(accountId);
 	}
 
-	public FinanceHandler(IModel iModel, IGui iGui) {
+	public FinanceHandler(IModel iModel) {
 		this.model = iModel;
-		this.iGui = iGui;
 		customerList = new LinkedList<Customer>();
 	}
 
@@ -49,7 +49,16 @@ public class FinanceHandler {
 		account.generateReport(fromDate, toDate, reportType);
 	}
 
-	public void main() {
+	
+	public void setGui(AGui gui) {
+		this.gui = gui;
+	}
 
+	public static void main(String[] args) {
+		
+		IModel model=new DefaultModel();
+		FinanceHandler controller=new FinanceHandler(model);
+		AGui gui=new DefaultGui("Financial App",controller);
+		controller.setGui(gui);
 	}
 }

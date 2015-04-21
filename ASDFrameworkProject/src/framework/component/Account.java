@@ -1,25 +1,38 @@
 package framework.component;
 
+
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-public abstract class Account extends Subject {
+public class Account extends Subject {
 	protected Type accountType;
 	private double accountBalance;
 	private Customer owner;
-	private int accountNumber;
+	private String accountNumber;
 	public List<Entry> transactionEntry;
 	public Date accountOpenDate;
-
-	public abstract void doDebit(Double amount);
-
-	public abstract void doCredit(Double amount);
-
-	public Account() {
-		// TODO Auto-generated constructor stub
+	
+	public static String ACC_NUM_FIELD="account no";
+	
+	public Account(HashMap<String, String> data) {
+		
+		accountNumber=data.get(Account.ACC_NUM_FIELD);
 		transactionEntry = new LinkedList<Entry>();
 	}
+
+	public void doDebit(double amount)
+	{
+		
+	}
+
+	public void doCredit(double amount)
+	{
+		
+	}
+
+	
 
 	public void addInterest() {
 		Entry newEntry = new CreditEntry(getCurrentBalance(),
