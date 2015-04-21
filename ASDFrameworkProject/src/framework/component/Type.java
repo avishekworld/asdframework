@@ -4,13 +4,15 @@ public abstract class Type {
 	private String typeName;
 	private double interestRate;
 	private double maxTransactionLimit;
+	private double lowestBalanceAllowed;
 
 	
 
-	public Type(String typeName, double interestRate, double maxTransactionLimit) {
+	public Type(String typeName, double interestRate, double maxTransactionLimit,double lb) {
 		this.typeName = typeName;
 		this.interestRate = interestRate;
 		this.maxTransactionLimit = maxTransactionLimit;
+		lowestBalanceAllowed=lb;
 	}
 
 
@@ -27,6 +29,33 @@ public abstract class Type {
 	public String getTypeName() {
 		return typeName;
 	}
+
+
+
+	public double getLowestBalanceAllowed() {
+		return lowestBalanceAllowed;
+	}
+
+
+
+	public void setLowestBalanceAllowed(double lowestBalanceAllowed) {
+		this.lowestBalanceAllowed = lowestBalanceAllowed;
+	}
 	
+	public boolean isTransactionValidate(Entry entry)
+	{
+		boolean shouldAllowed=true;
+		
+		if(entry.amount>maxTransactionLimit)
+		{
+			shouldAllowed= false;
+		}
+		else if(entry.afterBalance<lowestBalanceAllowed)
+		{
+			shouldAllowed=false;
+		}
+		
+		return shouldAllowed;
+	}
 	
 }

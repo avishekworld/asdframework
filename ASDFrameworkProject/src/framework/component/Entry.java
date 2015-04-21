@@ -7,7 +7,7 @@ public abstract class Entry {
 	private Date date;
 	protected double beforeBalance;
 	private String issuerName;
-	protected Double afterBalance;
+	protected double afterBalance;
 	protected double amount;
 	private String type;
 

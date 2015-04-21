@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 public class Account {
 	public static int accountCounter = 2000;
 	protected Type accountType;
@@ -37,15 +39,24 @@ public class Account {
 		Entry newEntry = new DebitEntry(getCurrentBalance(), amount,
 				getAccountNumber());
 
-		accountBalance = newEntry.getNewAmount();
+		if(accountType.isTransactionValidate(newEntry))
+		{
+			accountBalance = newEntry.getNewAmount();
 
-		transactionEntry.add(newEntry);
+			transactionEntry.add(newEntry);
 
-		NotificationRule notificationRule = owner.getNotificationRule();
+			NotificationRule notificationRule = owner.getNotificationRule();
 
-		if (notificationRule.ruleMatch(newEntry)) {
-			owner.update(newEntry);
+			if (notificationRule.ruleMatch(newEntry)) {
+				owner.update(newEntry);
+			}
 		}
+		else 
+		{
+			JOptionPane.showMessageDialog(null,newEntry.getEntryType()+"  is not allwed as max transaction limit "+accountType.getMaxTransactionLimit()+" and lowest amount allowed is "+accountType.getLowestBalanceAllowed());
+
+		}
+		
 
 	}
 
@@ -66,7 +77,7 @@ public class Account {
 
 	public void addInterest() {
 		Entry newEntry = new CreditEntry(getCurrentBalance(),
-				accountType.getInterestRate() * getCurrentBalance(),
+				(accountType.getInterestRate()/100) * getCurrentBalance(),
 				"Add Interest");
 		accountBalance = newEntry.getNewAmount();
 		transactionEntry.add(newEntry);
