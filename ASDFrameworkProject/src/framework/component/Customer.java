@@ -59,7 +59,7 @@ public abstract class Customer implements ICustomer, IObserver {
 
 	public void update(Entry entry) {
 		
-		String emailBody=entry.getEntryType()+" "+entry.getNewAmount();
+		String emailBody=entry.getEntryType()+" "+entry.getEntryAmount();
 		
 		sendEmail(new Email(email, "Bank Notification", emailBody));
 
