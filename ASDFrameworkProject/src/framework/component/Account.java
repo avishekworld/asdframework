@@ -13,6 +13,22 @@ public class Account extends Subject {
 	public List<Entry> transactionEntry;
 	public Date accountOpenDate;
 
+	public static String ACC_NUM_FIELD="account no";
+	
+	public Account() {
+		// TODO Auto-generated constructor stub
+		transactionEntry = new LinkedList<Entry>();
+
+		accountCounter++;
+		setAccountNumber("" + accountCounter);
+	}
+	
+	public Account(HashMap<String, String> data) {
+		
+		accountNumber=data.get(Account.ACC_NUM_FIELD);
+		transactionEntry = new LinkedList<Entry>();
+	}
+	
 	public void doDebit(Double amount) {
 		Entry newEntry = new DebitEntry(getCurrentBalance(), amount,
 				getAccountNumber());
@@ -27,13 +43,7 @@ public class Account extends Subject {
 		transactionEntry.add(newEntry);
 	}
 
-	public Account() {
-		// TODO Auto-generated constructor stub
-		transactionEntry = new LinkedList<Entry>();
-
-		accountCounter++;
-		setAccountNumber("" + accountCounter);
-	}
+	
 
 	public void addInterest() {
 		Entry newEntry = new CreditEntry(getCurrentBalance(),

@@ -9,14 +9,23 @@ public abstract class Customer implements ICustomer, IObserver {
 	protected String city;
 	protected String state;
 	protected String zip;
-	protected Email email;
+	protected String email;
 	private String customerId;
 	private ArrayList<Account> accountList;
 	private NotificationRule rule;
 
-	Customer() {
+	public Customer(HashMap<String, String> Data)
+	{
 		customerCounter++;
-		setCustomerId("" + customerCounter);
+		setCustomerId(""+customerCounter);
+		
+		name=Data.get(Customer.NAME_FIELD);
+		street=Data.get(Customer.STREET_FIELD);
+		city=Data.get(Customer.CITY_FIELD);
+		state=Data.get(Customer.STATE_FIELD);
+		zip=Data.get(Customer.ZIP_FIELD);
+		email=Data.get(Customer.EMAIL_FIELD);
+
 	}
 
 	public abstract void addAccount(Account account);
