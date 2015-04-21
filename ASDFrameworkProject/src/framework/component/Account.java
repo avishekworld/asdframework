@@ -92,8 +92,9 @@ public class Account extends Subject {
 		date2.setMinutes(59);
 		date2.setSeconds(59);
 		for (Entry e : transactionEntry) {
-			if ((date1.equals(e.getDate()) && date2.equals(e.getDate()))
-					|| (date1.after(e.getDate()) && date2.before(e.getDate()))) {
+			Date ev=e.getDate();
+			if ((date1.equals(e.getDate()) || date2.equals(e.getDate()))
+					|| (date1.before(e.getDate()) && date2.after(e.getDate()))) {
 				reportEntryList.add(e);
 			}
 		}// for

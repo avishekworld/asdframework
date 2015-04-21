@@ -1,12 +1,15 @@
 package framework.view;
 
 import java.awt.Dimension;
-
 import java.awt.FlowLayout;
+import java.io.IOException;
 import java.util.Collection;
-
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+
+
+
 
 
 import javax.swing.Box;
@@ -15,11 +18,9 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import framework.component.Account;
-
-
 import framework.component.Customer;
-
 import framework.component.FinanceHandler;
+import framework.component.TxtReport;
 
 
 public class DefaultGui extends AGui {
@@ -34,6 +35,7 @@ public class DefaultGui extends AGui {
 	JButton JButton_Deposit;
 	JButton JButton_Withdraw;
 	JButton JButton_Addinterest;
+	JButton JButton_GenerateReport;
 
 	public DefaultGui(String title, FinanceHandler controller) {
 		super(title, controller);
@@ -49,12 +51,18 @@ public class DefaultGui extends AGui {
 		JButton_CompAC = new JButton("Add company account");
 		JButton_CompAC.setPreferredSize(new Dimension(BUTTON_WIDTH,
 				BUTTON_HEIGHT));
+		
+		JButton_GenerateReport = new JButton("Generate Report");
+		JButton_GenerateReport.setPreferredSize(new Dimension(BUTTON_WIDTH,
+				BUTTON_HEIGHT));
 
 		JButton_PerAC.addActionListener(lSymAction);
 		JButton_CompAC.addActionListener(lSymAction);
+		JButton_GenerateReport.addActionListener(lSymAction);
 
 		creationButtonPanel.add(JButton_PerAC);
 		creationButtonPanel.add(JButton_CompAC);
+		creationButtonPanel.add(JButton_GenerateReport);
 
 	}
 
@@ -113,6 +121,8 @@ public class DefaultGui extends AGui {
 				JButtonDeposit_actionPerformed(event);
 			else if (object == JButton_Withdraw)
 				JButtonWithdraw_actionPerformed(event);
+			else if (object == JButton_GenerateReport)
+				JButtonGenerateReport_actionPerformed(event);
 
 		}
 	}
@@ -199,6 +209,21 @@ public class DefaultGui extends AGui {
 		    wd.setBounds(430, 15, 275, 140);
 		    wd.show();
         }
+		   
+
+	}
+	
+	void JButtonGenerateReport_actionPerformed(java.awt.event.ActionEvent event)
+	{
+	    Date startDate=new Date("04/20/2015");
+	    
+		try {
+			getController().generateReport(startDate, new Date(), new TxtReport());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
 		   
 
 	}
