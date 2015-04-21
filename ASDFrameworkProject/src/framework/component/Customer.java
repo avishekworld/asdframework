@@ -50,11 +50,18 @@ public abstract class Customer implements ICustomer, IObserver {
 		accountList.remove(account);
 	}
 
-	public abstract void sendEmail(Email email);
+	public void sendEmail(Email email)
+	{
+		PopServer.sendEmail(email);
+	}
 
 	public abstract Account getLastAddedAccount();
 
 	public void update(Entry entry) {
+		
+		String emailBody=entry.getEntryType()+" "+entry.getNewAmount();
+		
+		sendEmail(new Email(email, "Bank Notification", emailBody));
 
 	}
 
@@ -105,5 +112,11 @@ public abstract class Customer implements ICustomer, IObserver {
 		// TODO Auto-generated method stub
 		return "Customer: [ " + name + " , " + city + " ] ";
 	}
+
+	public NotificationRule getNotificationRule() {
+		return notificationRule;
+	}
+	
+	
 
 }

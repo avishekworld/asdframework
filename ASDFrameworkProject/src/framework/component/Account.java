@@ -38,19 +38,37 @@ public class Account extends Subject {
 	public void doDebit(Double amount) {
 		Entry newEntry = new DebitEntry(getCurrentBalance(), amount,
 				getAccountNumber());
+		
 		accountBalance = newEntry.getNewAmount();
+		
 		transactionEntry.add(newEntry);
-		if (accountBalance < 0) {
-			notifyCustomer(newEntry);
+		
+		NotificationRule notificationRule=owner.getNotificationRule();
+		
+		if(notificationRule.ruleMatch(newEntry))
+		{
+			owner.update(newEntry);
 		}
+		
+		
+		
+		
 	}
 
 	public void doCredit(Double amount) {
 		Entry newEntry = new CreditEntry(getCurrentBalance(), amount,
 				getAccountNumber());
+		
 		accountBalance = newEntry.getNewAmount();
+		
 		transactionEntry.add(newEntry);
 
+		NotificationRule notificationRule=owner.getNotificationRule();
+		
+		if(notificationRule.ruleMatch(newEntry))
+		{
+			owner.update(newEntry);
+		}
 	}
 
 	public void addInterest() {

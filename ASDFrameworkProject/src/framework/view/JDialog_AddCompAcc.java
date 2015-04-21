@@ -94,6 +94,8 @@ public class JDialog_AddCompAcc extends javax.swing.JDialog
 		JButton_OK.addActionListener(lSymAction);
 		JButton_Calcel.addActionListener(lSymAction);
 		//}}
+		
+		setDefaulFormtData();
 	}
 
 
@@ -120,6 +122,19 @@ public class JDialog_AddCompAcc extends javax.swing.JDialog
 	//}}
 
 
+	public void setDefaulFormtData()
+	{
+		JTextField_ACNR.getText();
+		
+		JTextField_NAME.setText("Dummy Name");
+		JTextField_STR.setText("1000 north ");
+		JTextField_CT.setText("Fairfield");
+		JTextField_ZIP.setText("52557");
+		JTextField_ST.setText("Iowa");
+		JTextField_EM.setText("name@email.com");
+		JTextField_NoOfEmp.setText("8");
+	}
+	
 	class SymAction implements java.awt.event.ActionListener
 	{
 		public void actionPerformed(java.awt.event.ActionEvent event)
@@ -141,7 +156,7 @@ public class JDialog_AddCompAcc extends javax.swing.JDialog
 		guiData.put(Company.CITY_FIELD,JTextField_CT.getText());
 		guiData.put(Company.ZIP_FIELD,JTextField_ZIP.getText());
 		guiData.put(Company.STATE_FIELD,JTextField_ST.getText());
-		
+		guiData.put(Customer.EMAIL_FIELD,JTextField_EM.getText());
 		guiData.put(Company.NO_OF_EMPLOYEE_FIELD,JTextField_NoOfEmp.getText());
 		
 		

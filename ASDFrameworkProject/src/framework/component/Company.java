@@ -31,12 +31,6 @@ public class Company extends Customer implements ICompany {
 
 	}
 
-	@Override
-	public void sendEmail(Email email) {
-		// TODO Auto-generated method stub
-
-	}
-
 
 	@Override
 	public Account getLastAddedAccount() {

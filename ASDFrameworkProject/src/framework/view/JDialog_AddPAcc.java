@@ -70,7 +70,6 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
 		JTextField_ZIP.setBounds(84,180,156,20);
 		getContentPane().add(JTextField_BD);
 		JTextField_BD.setBounds(84,204,156,20);
-		JTextField_BD.setText("10/11/1988");
 		getContentPane().add(JTextField_EM);
 		JTextField_EM.setBounds(84,228,156,20);
 		JButton_OK.setText("OK");
@@ -94,6 +93,8 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
 		JButton_OK.addActionListener(lSymAction);
 		JButton_Cancel.addActionListener(lSymAction);
 		//}}
+		
+		setDefaulFormtData();
 	}
 
 
@@ -122,7 +123,18 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
 
 
 
-
+	public void setDefaulFormtData()
+	{
+		JTextField_ACNR.getText();
+		
+		JTextField_NAME.setText("Dummy Name");
+		JTextField_STR.setText("1000 north ");
+		JTextField_CT.setText("Fairfield");
+		JTextField_ZIP.setText("52557");
+		JTextField_ST.setText("Iowa");
+		JTextField_EM.setText("name@email.com");
+		JTextField_BD.setText("10/11/1988");
+	}
 
 
 	class SymAction implements java.awt.event.ActionListener
@@ -146,7 +158,7 @@ public class JDialog_AddPAcc extends javax.swing.JDialog
 		guiData.put(Customer.CITY_FIELD,JTextField_CT.getText());
 		guiData.put(Customer.ZIP_FIELD,JTextField_ZIP.getText());
 		guiData.put(Customer.STATE_FIELD,JTextField_ST.getText());
-		
+		guiData.put(Customer.EMAIL_FIELD,JTextField_EM.getText());
 		guiData.put(Personal.BIRTH_DATE_FIELD,JTextField_BD.getText());
 		
 		//String[] accountTypeString=SimpleTypeFactory.getDefaultTypeFactory().getTypes();
