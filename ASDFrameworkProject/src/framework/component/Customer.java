@@ -13,7 +13,7 @@ public abstract class Customer implements ICustomer, IObserver {
 	protected String email;
 	private String customerId;
 	private ArrayList<Account> accountList;
-	private NotificationRule rule;
+	protected NotificationRule notificationRule;
 
 	public static String NAME_FIELD = "name";
 	public static String STREET_FIELD = "street";
@@ -52,4 +52,30 @@ public abstract class Customer implements ICustomer, IObserver {
 	private void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public String getZip() {
+		return zip;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+	
+	
 }

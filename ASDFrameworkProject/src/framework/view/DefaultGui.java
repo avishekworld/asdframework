@@ -3,6 +3,7 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.util.Collection;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -14,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import framework.component.Account;
 import framework.component.FinanceHandler;
 
 
@@ -21,9 +23,6 @@ import framework.component.FinanceHandler;
 
 public class DefaultGui  extends AGui
 {
-	String accountnr, clientName,street,city,zip,state,accountType,clientType,amountDeposit;
-    boolean newaccount;
-    private Object rowdata[];
     SymAction lSymAction;
     DefaultTableModel model;
     JButton JButton_PerAC;
@@ -113,6 +112,21 @@ public class DefaultGui  extends AGui
 		}
 	}
 	
+	public void modelUpdated()
+	{
+		Collection<Account> allAccounts=controller.getAllAccount();
+		
+		for(Account account:allAccounts)
+		{
+			Object[] rawData=new Object[5];
+			rawData[0] = account.getAccountNumber();
+			rawData[1] = account.getOwner().getName();
+			rawData[2] = account.getOwner().getCity();
+			rawData[3] = account.getAccountType().getTypeName();
+			rawData[4] = account.getAccountBalance();
+	        model.addRow(rawData);
+		}
+	}
 	
 	void JButtonPerAC_actionPerformed(java.awt.event.ActionEvent event)
 	{
@@ -126,18 +140,7 @@ public class DefaultGui  extends AGui
 		pac.setBounds(450, 20, 300, 330);
 		pac.show();
 
-		if (newaccount){
-            // add row to table
-            rowdata[0] = accountnr;
-            rowdata[1] = clientName;
-            rowdata[2] = city;
-            rowdata[3] = "P";
-            rowdata[4] = accountType;
-            rowdata[5] = "0";
-            model.addRow(rowdata);
-            JTable1.getSelectionModel().setAnchorSelectionIndex(-1);
-            newaccount=false;
-        }
+
 
        
         
@@ -154,19 +157,6 @@ public class DefaultGui  extends AGui
 		JDialog_AddCompAcc pac = new JDialog_AddCompAcc(myframe);
 		pac.setBounds(450, 20, 300, 330);
 		pac.show();
-		
-		if (newaccount){
-            // add row to table
-            rowdata[0] = accountnr;
-            rowdata[1] = clientName;
-            rowdata[2] = city;
-            rowdata[3] = "C";
-            rowdata[4] = accountType;
-            rowdata[5] = "0";
-            model.addRow(rowdata);
-            JTable1.getSelectionModel().setAnchorSelectionIndex(-1);
-            newaccount=false;
-        }
 
 	}
 
@@ -215,14 +205,14 @@ public class DefaultGui  extends AGui
 		    wd.show();
     		
 		    // compute new amount
-            long deposit = Long.parseLong(amountDeposit);
+            /*long deposit = Long.parseLong(amountDeposit);
             String samount = (String)model.getValueAt(selection, 5);
             long currentamount = Long.parseLong(samount);
 		    long newamount=currentamount-deposit;
 		    model.setValueAt(String.valueOf(newamount),selection, 5);
 		    if (newamount <0){
 		       JOptionPane.showMessageDialog(JButton_Withdraw, " Account "+accnr+" : balance is negative: $"+String.valueOf(newamount)+" !","Warning: negative balance",JOptionPane.WARNING_MESSAGE);
-		    }
+		    }*/
 		}
 		
 		

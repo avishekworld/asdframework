@@ -16,6 +16,7 @@ public class JDialog_AddCompAcc extends javax.swing.JDialog
     private AGui parentframe;
     HashMap<String, String> guiData;
     ICommand command;
+
     
 	public JDialog_AddCompAcc(AGui myframe)
 	{
@@ -23,6 +24,7 @@ public class JDialog_AddCompAcc extends javax.swing.JDialog
 		parentframe=myframe;
 		
 		guiData=new HashMap<String, String>();
+
 		
 		setTitle("Add compamy account");
 		setModal(true);
@@ -150,6 +152,7 @@ public class JDialog_AddCompAcc extends javax.swing.JDialog
 		guiData.put(Company.STATE_FIELD,JTextField_ST.getText());
 		
 		guiData.put(Company.NO_OF_EMPLOYEE_FIELD,JTextField_NoOfEmp.getText());
+		
 		
 		command=new PersonalAccountOpenCommand(parentframe.getController(), guiData);
 		command.exceute();

@@ -1,7 +1,8 @@
 package framework.model;
 
-import java.util.HashMap;
-import java.util.Iterator;
+
+import java.util.*;
+
 
 import framework.component.Account;
 import framework.component.Customer;
@@ -37,14 +38,20 @@ public class DefaultModel implements IModel {
 		}
 	}
 
-	public HashMap<String, Account> getAllAcounts() {
-		return accountList;
+	public List<Account> getAllAcounts() {
+		
+		List<Account> allAccounts = new ArrayList<Account>(accountList.values());
+		
+		return allAccounts;
 	}
 
 	@Override
-	public HashMap<String, Customer> getAllCustomers() {
-		// TODO Auto-generated method stub
-		return customerList;
+	public List<Customer> getAllCustomers() {
+
+		
+		List<Customer> allCustomers = new ArrayList<Customer>(customerList.values());
+		
+		return allCustomers;
 	}
 
 	@Override

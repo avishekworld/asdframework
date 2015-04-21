@@ -1,5 +1,7 @@
 package framework.component;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -31,7 +33,15 @@ public class FinanceHandler {
 	}
 
 	public Account getAccount(String accountId) {
-		return model.getAllAcounts().get(accountId);
+		
+		//Account account=model.getAllAcounts().get(accountId);
+		
+		return null;
+		//return model.getAllAcounts().get(accountId);
+	}
+	
+	public List<Account> getAllAccount() {
+		return model.getAllAcounts();
 	}
 
 	public FinanceHandler(IModel iModel) {
@@ -40,7 +50,7 @@ public class FinanceHandler {
 	}
 
 	public void generateReport(Date fromDate, Date toDate, IReport reportType) {
-		for (Account account : model.getAllAcounts().values())
+		for (Account account : model.getAllAcounts())
 			account.generateReport(fromDate, toDate, reportType);
 	}
 

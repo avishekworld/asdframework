@@ -15,6 +15,8 @@ public class Personal extends Customer implements IPerson {
 		
 		birthdate=new Date(data.get(Personal.BIRTH_DATE_FIELD));
 		
+		notificationRule=new PersonalNotificationRule();
+		
 	}
 	
 	@Override

@@ -76,6 +76,8 @@ public abstract class AGui  extends JFrame
 		
 	}
 	
+	public abstract void modelUpdated();
+	
 	public void createTable()
 	{
 		  	JScrollPane1 = new JScrollPane();

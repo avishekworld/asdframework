@@ -10,6 +10,7 @@ public class Company extends Customer implements ICompany {
 	public Company(HashMap<String, String> data) {
 		super(data);
 		noOfEmployee = Integer.parseInt(data.get(Company.NO_OF_EMPLOYEE_FIELD));
+		notificationRule = new CompanyNotificationRule();
 
 	}
 
