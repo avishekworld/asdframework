@@ -1,6 +1,7 @@
 package framework.component;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,8 +14,8 @@ public class Account extends Subject {
 	public List<Entry> transactionEntry;
 	public Date accountOpenDate;
 
-	public static String ACC_NUM_FIELD="account no";
-	
+	public static String ACC_NUM_FIELD = "account no";
+
 	public Account() {
 		// TODO Auto-generated constructor stub
 		transactionEntry = new LinkedList<Entry>();
@@ -22,13 +23,13 @@ public class Account extends Subject {
 		accountCounter++;
 		setAccountNumber("" + accountCounter);
 	}
-	
+
 	public Account(HashMap<String, String> data) {
-		
-		accountNumber=data.get(Account.ACC_NUM_FIELD);
+
+		accountNumber = data.get(Account.ACC_NUM_FIELD);
 		transactionEntry = new LinkedList<Entry>();
 	}
-	
+
 	public void doDebit(Double amount) {
 		Entry newEntry = new DebitEntry(getCurrentBalance(), amount,
 				getAccountNumber());
@@ -42,8 +43,6 @@ public class Account extends Subject {
 		accountBalance = newEntry.getNewAmount();
 		transactionEntry.add(newEntry);
 	}
-
-	
 
 	public void addInterest() {
 		Entry newEntry = new CreditEntry(getCurrentBalance(),
