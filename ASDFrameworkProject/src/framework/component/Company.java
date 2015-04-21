@@ -18,16 +18,4 @@ public class Company extends Customer implements ICompany {
 		return noOfEmployee;
 	}
 
-
-	@Override
-	public Account getLastAddedAccount() {
-		return super.accountList.get(super.accountList.size() - 1);
-
-	}
-
-	@Override
-	public String getCustomerType() {
-		// TODO Auto-generated method stub
-		return "C";
-	}
 }

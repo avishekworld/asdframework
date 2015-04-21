@@ -7,5 +7,5 @@ public interface ICustomer {
 
 	public void sendEmail(Email email);
 
-	public String getCustomerType();
+	public String getKindOfAccount();
 }
