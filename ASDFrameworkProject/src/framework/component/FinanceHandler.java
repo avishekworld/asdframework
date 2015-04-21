@@ -47,6 +47,7 @@ public class FinanceHandler {
 	}
 
 	public void generateReport(Date fromDate, Date toDate, IReport reportType) {
+		
 		for (Account account : model.getAllAcounts())
 			account.generateReport(fromDate, toDate, reportType);
 	}

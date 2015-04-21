@@ -24,9 +24,6 @@ import framework.component.TxtReport;
 
 
 public class DefaultGui extends AGui {
-	String accountnr, clientName, street, city, zip, state, accountType,
-			clientType, amountDeposit;
-	boolean newaccount;
 
 	SymAction lSymAction;
 	DefaultTableModel model;
@@ -97,16 +94,6 @@ public class DefaultGui extends AGui {
 		return model;
 	}
 
-	public void getTableData() {
-		// System.out.println("Come here 2");
-		/*
-		 * HashMap<String, Account> accountList =
-		 * controller.getModel().getAllAcounts();
-		 */
-
-
-
-		}
 
 
 
@@ -156,7 +143,7 @@ public class DefaultGui extends AGui {
 		 * it
 		 */
 
-		JDialog_AddPAcc pac = new JDialog_AddPAcc(myframe);
+		JDialogAddPerAcc pac = new JDialogAddPerAcc(myframe);
 		pac.setBounds(450, 20, 300, 400);
 		pac.show();
 
@@ -170,7 +157,7 @@ public class DefaultGui extends AGui {
 		 * show it
 		 */
 
-		JDialog_AddCompAcc pac = new JDialog_AddCompAcc(myframe);
+		JDialogAddComAcc pac = new JDialogAddComAcc(myframe);
 		pac.setBounds(450, 20, 300, 400);
 		pac.show();
 
@@ -221,7 +208,7 @@ public class DefaultGui extends AGui {
 			getController().generateReport(startDate, new Date(), new TxtReport());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
         
 		   
