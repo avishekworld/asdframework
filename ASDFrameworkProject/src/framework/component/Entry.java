@@ -5,25 +5,23 @@ import java.util.Date;
 
 public abstract class Entry {
 	private Date date;
-	private double beforeBalance;
-	private String IssuerName;
-	private Double afterBalance;
-	private double amount;
+	protected double beforeBalance;
+	private String issuerName;
+	protected Double afterBalance;
+	protected double amount;
 	private String type;
 
 	Entry(String entryType, double theBalance, double theAmount,
 			String theIssuerName) {
-		type = entryType;
-		date = Calendar.getInstance().getTime();
-		IssuerName = theIssuerName;
+		setEntryType(entryType);
+		setDate(Calendar.getInstance().getTime());
+		issuerName = theIssuerName;
 		beforeBalance = theBalance;
-		amount = theAmount;
-		afterBalance = beforeBalance + amount;
+		setEntryAmount(theAmount);
+
 	}
 
-	public double getNewAmount() {
-		return afterBalance;
-	}
+	public abstract double getNewAmount();
 
 	public double getBeforBalance() {
 		return 0;
@@ -31,5 +29,29 @@ public abstract class Entry {
 
 	public double getAfterBalance() {
 		return 0;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public double getEntryAmount() {
+		return amount;
+	}
+
+	public void setEntryAmount(double amount) {
+		this.amount = amount;
+	}
+
+	public String getEntryType() {
+		return type;
+	}
+
+	public void setEntryType(String type) {
+		this.type = type;
 	}
 }

@@ -47,4 +47,11 @@ public class DefaultModel implements IModel {
 		return customerList;
 	}
 
+	@Override
+	public void addAccount(Account account) {
+		// TODO Auto-generated method stub
+		accountList.put(account.getAccountNumber(), account);
+
+	}
+
 }

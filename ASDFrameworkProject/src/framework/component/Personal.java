@@ -8,7 +8,7 @@ public class Personal extends Customer implements IPerson {
 	@Override
 	public Date getBirthday() {
 		// TODO Auto-generated method stub
-		return null;
+		return birthdate;
 	}
 
 	@Override

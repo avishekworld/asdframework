@@ -12,6 +12,8 @@ public interface IModel {
 
 	public void addCustomer(Customer customer);
 
+	public void addAccount(Account account);
+
 	public void addInterest();
 
 	public HashMap<String, Account> getAllAcounts();

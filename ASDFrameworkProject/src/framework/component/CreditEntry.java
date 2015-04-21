@@ -8,6 +8,7 @@ public class CreditEntry extends Entry {
 	}
 
 	public double getNewAmount() {
-		return super.getNewAmount();
+		afterBalance = beforeBalance + getEntryAmount();
+		return afterBalance;
 	}
 }
