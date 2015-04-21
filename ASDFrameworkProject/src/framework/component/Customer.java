@@ -53,11 +53,10 @@ public abstract class Customer implements ICustomer {
 	public Account getLastAddedAccount() {
 		return accountList.get(accountList.size() - 1);
 	}
-
-	public void update(Entry entry) {
-
-		String emailBody = entry.getEntryType() + " " + entry.getNewAmount();
-
+public void update(Entry entry) {
+		
+		String emailBody=entry.getEntryType()+" "+entry.getNewAmount();
+		
 		sendEmail(new Email(email, "Bank Notification", emailBody));
 
 	}
@@ -78,9 +77,13 @@ public abstract class Customer implements ICustomer {
 		this.customerId = customerId;
 	}
 
+
+
 	public String getStreet() {
 		return street;
 	}
+
+
 
 	public String getState() {
 		return state;
@@ -93,6 +96,8 @@ public abstract class Customer implements ICustomer {
 	public String getEmail() {
 		return email;
 	}
+	
+	
 
 	public String getKindOfAccount() {
 		return kindOfAccount;
@@ -107,5 +112,7 @@ public abstract class Customer implements ICustomer {
 	public NotificationRule getNotificationRule() {
 		return notificationRule;
 	}
-
+	
 }
+
+	

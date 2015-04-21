@@ -25,17 +25,17 @@ public abstract class AGui  extends JFrame
 
     protected JTable JTable1;
     private JScrollPane JScrollPane1;
-    AGui myframe;
+    protected AGui myframe;
     
-    final int BUTTON_WIDTH=160;
-    final int BUTTON_HEIGHT=30;
-    final int V_GAP=20;
-    final int H_GAP=10;
+    protected final int BUTTON_WIDTH=160;
+    protected final int BUTTON_HEIGHT=30;
+    protected final int V_GAP=20;
+    protected final int H_GAP=10;
     
-    JPanel creationButtonPanel;
-    JPanel tablePanel;
-    JPanel operationButtonPanel;
-    FinanceHandler controller;
+    protected JPanel creationButtonPanel;
+    protected JPanel tablePanel;
+    protected JPanel operationButtonPanel;
+    protected FinanceHandler controller;
     
 	public AGui(String title,FinanceHandler controller)
 	{
@@ -88,7 +88,6 @@ public abstract class AGui  extends JFrame
 	        JScrollPane1.getViewport().add(JTable1);
 	        JTable1.setBounds(0, 0, 300, 0);
 	        
-	        getTableData();
 	}
 	
 	/*JButton b1=new JButton("Creation Button");
@@ -106,7 +105,6 @@ public abstract class AGui  extends JFrame
 	
 	public abstract DefaultTableModel getTableModel();
 	
-	public abstract void getTableData();
 	public FinanceHandler getController() {
 		return controller;
 	}
