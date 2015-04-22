@@ -1,6 +1,6 @@
 package framework.component;
 
-public class SimpleTypeFactory {
+public class SimpleAccountTypeFactory {
 
 	public static AccountTypeFactory getDefaultTypeFactory()
 	{

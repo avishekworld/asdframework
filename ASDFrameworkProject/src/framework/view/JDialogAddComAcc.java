@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 
 import framework.component.CompanyAccountOpenCommand;
 import framework.component.CompanyCustomer;
-import framework.component.SimpleTypeFactory;
+import framework.component.SimpleAccountTypeFactory;
 
 public class JDialogAddComAcc extends JDialogAddAccount {
 
@@ -72,11 +72,11 @@ public class JDialogAddComAcc extends JDialogAddAccount {
 				return;
 			}
 
-			String type = SimpleTypeFactory.getDefaultTypeFactory()
+			String type = SimpleAccountTypeFactory.getDefaultTypeFactory()
 					.getAccountTypes()[0];
 
 			command = new CompanyAccountOpenCommand(
-					parentframe.getController(), guiData, SimpleTypeFactory
+					parentframe.getController(), guiData, SimpleAccountTypeFactory
 							.getDefaultTypeFactory().getAccountType(type));
 			command.exceute();
 

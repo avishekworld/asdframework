@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 
 import framework.component.PersonalAccountOpenCommand;
 import framework.component.PersonalCustomer;
-import framework.component.SimpleTypeFactory;
+import framework.component.SimpleAccountTypeFactory;
 
 public class JDialogAddPerAcc extends JDialogAddAccount {
 
@@ -83,11 +83,11 @@ public class JDialogAddPerAcc extends JDialogAddAccount {
 				return;
 			}
 
-			String type = SimpleTypeFactory.getDefaultTypeFactory()
+			String type = SimpleAccountTypeFactory.getDefaultTypeFactory()
 					.getAccountTypes()[0];
 
 			command = new PersonalAccountOpenCommand(
-					parentframe.getController(), guiData, SimpleTypeFactory
+					parentframe.getController(), guiData, SimpleAccountTypeFactory
 							.getDefaultTypeFactory().getAccountType(type));
 			command.exceute();
 
