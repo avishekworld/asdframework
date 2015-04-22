@@ -5,19 +5,21 @@ import java.util.*;
 
 import framework.component.Account;
 import framework.component.Customer;
+import framework.component.IAccount;
+import framework.component.ICustomer;
 
 public interface IModel {
-	public Customer getCustomer(String customerId);
+	public ICustomer getCustomer(String customerId);
 
-	public Account getAccount(String accountId);
+	public IAccount getAccount(String accountId);
 
-	public void addCustomer(Customer customer);
+	public void addCustomer(ICustomer customer);
 
-	public void addAccount(Account account);
+	public void addAccount(IAccount account);
 
 	public void addInterest();
 
-	public List<Account> getAllAcounts();
+	public List<IAccount> getAllAcounts();
 
-	public List<Customer> getAllCustomers();
+	public List<ICustomer> getAllCustomers();
 }

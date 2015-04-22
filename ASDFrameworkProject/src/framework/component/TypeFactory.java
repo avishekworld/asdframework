@@ -4,6 +4,6 @@ public abstract class TypeFactory {
 	
 	public abstract String[] getTypes();
 	
-	public abstract Type getType(String typeName);
+	public abstract AccountType getType(String typeName);
 
 }

@@ -6,13 +6,13 @@ public class PersonalAccountOpenCommand implements ICommand {
 
 	FinanceHandler controller;
 	HashMap<String, String> guiData;
-	Type accountType;
+	AccountType accountType;
 
 	public PersonalAccountOpenCommand(FinanceHandler controller,
-			HashMap<String, String> guiData,Type type) {
+			HashMap<String, String> guiData,AccountType accountType) {
 		this.controller = controller;
 		this.guiData = guiData;
-		accountType=type;
+		this.accountType=accountType;
 	}
 
 	@Override

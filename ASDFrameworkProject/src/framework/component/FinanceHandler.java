@@ -22,9 +22,9 @@ public class FinanceHandler {
 
 	protected AGui gui;
 
-	public void addCustomer(Customer customer) {
+	public void addCustomer(ICustomer customer) {
 		model.addCustomer(customer);
-		Account account = customer.getLastAddedAccount();
+		IAccount account = customer.getLastAddedAccount();
 		model.addAccount(account);
 	}
 
@@ -33,12 +33,12 @@ public class FinanceHandler {
 	}
 
 
-	public Account getAccount(String accountId) {
+	public IAccount getAccount(String accountId) {
 		
 		return model.getAccount(accountId);
 	}
 	
-	public List<Account> getAllAccount() {
+	public List<IAccount> getAllAccount() {
 		return model.getAllAcounts();
 	}
 
@@ -48,7 +48,7 @@ public class FinanceHandler {
 
 	public void generateReport(Date fromDate, Date toDate, IReport reportType) {
 		
-		for (Account account : model.getAllAcounts())
+		for (IAccount account : model.getAllAcounts())
 			account.generateReport(fromDate, toDate, reportType);
 	}
 
@@ -76,29 +76,6 @@ public class FinanceHandler {
 		controller.setModel(model);
 		controller.setGui(gui);
 		
-		
-		
-		
-		/*HashMap<String, String> guiData = new HashMap<String, String>();
-
-		guiData.put(Account.ACC_NUM_FIELD, "1234");
-
-		guiData.put(Customer.NAME_FIELD, "Sajedul");
-		guiData.put(Customer.STREET_FIELD, "1000 N 4th");
-		guiData.put(Customer.CITY_FIELD, "Fairfield");
-		guiData.put(Customer.ZIP_FIELD, "52557");
-		guiData.put(Customer.STATE_FIELD, "Iowa");
-
-		guiData.put(Personal.BIRTH_DATE_FIELD, "02/22/1999");
-
-		ICommand command = new PersonalAccountOpenCommand(controller, guiData);
-		command.exceute();
-
-		Account account = new Account(guiData);
-		model.addAccount(account);
-
-		AGui gui = new DefaultGui("Financial App", controller);
-		controller.setGui(gui);*/
 	}
 
 }

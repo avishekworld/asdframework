@@ -18,4 +18,5 @@ public class Company extends Customer implements ICompany {
 		return noOfEmployee;
 	}
 
+
 }

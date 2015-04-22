@@ -6,20 +6,20 @@ public class CompanyAccountOpenCommand implements ICommand {
 
 	FinanceHandler controller;
 	HashMap<String, String> guiData;
-	Type accountType;
+	AccountType accountType;
 	
 	public CompanyAccountOpenCommand(FinanceHandler controller,
-			HashMap<String, String> guiData, Type type) {
+			HashMap<String, String> guiData, AccountType accountType) {
 		this.controller = controller;
 		this.guiData = guiData;
-		accountType=type;
+		this.accountType=accountType;
 	}
 
 	@Override
 	public void exceute() {
 		
 		Company companyCustomer=new Company(guiData);
-		Account account=new Account(guiData,accountType);
+		IAccount account=new Account(guiData,accountType);
 		companyCustomer.addAccount(account);
 		controller.addCustomer(companyCustomer);
 		

@@ -7,9 +7,9 @@ public class PersonalNotificationRule implements NotificationRule {
 		this.notifiAmount = notifiAmount;
 	}
 
-	public boolean ruleMatch(Entry entry) {
+	public boolean ruleMatch(TransactionEntry transactionEntry) {
 
-		if(entry.getEntryAmount()>=notifiAmount || entry.getAfterBalance()<0)
+		if(transactionEntry.getEntryAmount()>=notifiAmount || transactionEntry.getAfterBalance()<0)
 
 			return true;
 		else

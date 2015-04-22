@@ -3,21 +3,21 @@ package framework.component;
 import java.util.Calendar;
 import java.util.Date;
 
-public abstract class Entry {
+public abstract class TransactionEntry {
 	private Date date;
 	protected double beforeBalance;
 	private String issuerName;
 	protected double afterBalance;
 	protected double amount;
-	private String type;
+	private String entryType;
 
-	Entry(String entryType, double theBalance, double theAmount,
+	TransactionEntry(String entryType, double theBalance, double theAmount,
 			String theIssuerName) {
-		setEntryType(entryType);
-		setDate(Calendar.getInstance().getTime());
+		this.entryType=entryType;
+		date=Calendar.getInstance().getTime();
 		issuerName = theIssuerName;
 		beforeBalance = theBalance;
-		setEntryAmount(theAmount);
+		amount=theAmount;
 
 	}
 
@@ -35,31 +35,21 @@ public abstract class Entry {
 		return date;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
 
 	public double getEntryAmount() {
 		return amount;
 	}
 
-	public void setEntryAmount(double amount) {
-		this.amount = amount;
-	}
-
 	public String getEntryType() {
-		return type;
+		return entryType;
 	}
 
-	public void setEntryType(String type) {
-		this.type = type;
-	}
 
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
 		return "[ " + date.toString() + "\t " + beforeBalance + "\t "
-				+ issuerName + "\t " + type + "\t " + amount + "\t "
+				+ issuerName + "\t " + entryType + "\t " + amount + "\t "
 				+ getNewAmount() + " ]";
 	}
 }

@@ -7,36 +7,36 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-public class Account {
+public class Account implements IAccount{
 	public static int accountCounter = 2000;
-	protected Type accountType;
+	protected AccountType accountType;
 	private double accountBalance;
-	private Customer owner;
+	private ICustomer owner;
 	private String accountNumber;
-	public List<Entry> transactionEntry;
+	public List<TransactionEntry> transactionEntry;
 	public Date accountOpenDate;
 
 	public static String ACC_NUM_FIELD = "accountno";
 	public static String ACC_TYPE_FIELD = "accounttype";
 
-	public Account(HashMap<String, String> data, Type type) {
-		transactionEntry = new LinkedList<Entry>();
+	public Account(HashMap<String, String> data, AccountType accountType) {
+		transactionEntry = new LinkedList<TransactionEntry>();
 
 		accountCounter++;
 		setAccountNumber("" + accountCounter);
 
 		accountNumber = data.get(Account.ACC_NUM_FIELD);
-		transactionEntry = new LinkedList<Entry>();
+		transactionEntry = new LinkedList<TransactionEntry>();
 
-		accountType = type;
+		this.accountType = accountType;
 
 		accountOpenDate = new Date();
 		// accountCounter++;
 		// setAccountNumber("" + accountCounter);
 	}
 
-	public void doDebit(Double amount) {
-		Entry newEntry = new DebitEntry(getCurrentBalance(), amount,
+	public void doDebit(double amount) {
+		TransactionEntry newEntry = new DebitEntry(getCurrentBalance(), amount,
 				getAccountNumber());
 
 		if(accountType.isTransactionValidate(newEntry))
@@ -61,7 +61,7 @@ public class Account {
 	}
 
 	public void doCredit(Double amount) {
-		Entry newEntry = new CreditEntry(getCurrentBalance(), amount,
+		TransactionEntry newEntry = new CreditEntry(getCurrentBalance(), amount,
 				getAccountNumber());
 
 		accountBalance = newEntry.getNewAmount();
@@ -76,32 +76,32 @@ public class Account {
 	}
 
 	public void addInterest() {
-		Entry newEntry = new CreditEntry(getCurrentBalance(),
+		TransactionEntry newEntry = new CreditEntry(getCurrentBalance(),
 				(accountType.getInterestRate()/100) * getCurrentBalance(),
 				"Add Interest");
 		accountBalance = newEntry.getNewAmount();
 		transactionEntry.add(newEntry);
 	}
 
-	public Double getCurrentBalance() {
+	public double getCurrentBalance() {
 		return accountBalance;
 	}
 
-	public void notifyCustomer(Entry entry) {
+	public void notifyCustomer(TransactionEntry transactionEntry) {
 		System.out.println(" Account " + getAccountNumber()
 				+ " : balance is negative: $" + getCurrentBalance() + " !"
 				+ "Warning: negative balance");
 	}
 
 	public void generateReport(Date date1, Date date2, IReport reportType) {
-		List<Entry> reportEntryList = new LinkedList<Entry>();
+		List<TransactionEntry> reportEntryList = new LinkedList<TransactionEntry>();
 		date1.setHours(0);
 		date1.setMinutes(0);
 		date1.setSeconds(0);
 		date2.setHours(23);
 		date2.setMinutes(59);
 		date2.setSeconds(59);
-		for (Entry e : transactionEntry) {
+		for (TransactionEntry e : transactionEntry) {
 			Date ev = e.getDate();
 			if ((date1.equals(e.getDate()) || date2.equals(e.getDate()))
 					|| (date1.before(e.getDate()) && date2.after(e.getDate()))) {
@@ -120,7 +120,7 @@ public class Account {
 		date2.setHours(23);
 		date2.setMinutes(59);
 		date2.setSeconds(59);
-		for (Entry e : transactionEntry) {
+		for (TransactionEntry e : transactionEntry) {
 			if ((date1.equals(e.getDate()) && date2.equals(e.getDate()))
 					|| (date1.after(e.getDate()) && date2.before(e.getDate()))) {
 
@@ -142,7 +142,7 @@ public class Account {
 		date2.setHours(23);
 		date2.setMinutes(59);
 		date2.setSeconds(59);
-		for (Entry e : transactionEntry) {
+		for (TransactionEntry e : transactionEntry) {
 			if ((date1.equals(e.getDate()) && date2.equals(e.getDate()))
 					|| (date1.after(e.getDate()) && date2.before(e.getDate()))) {
 
@@ -159,11 +159,11 @@ public class Account {
 		return accountNumber;
 	}
 
-	public Customer getOwner() {
+	public ICustomer getOwner() {
 		return owner;
 	}
 
-	public Type getAccountType() {
+	public AccountType getAccountType() {
 		return accountType;
 	}
 
@@ -181,7 +181,7 @@ public class Account {
 		return accountNumber + " -> " + accountBalance;
 	}
 
-	public void setOwner(Customer owner) {
+	public void setOwner(ICustomer owner) {
 		this.owner = owner;
 	}
 

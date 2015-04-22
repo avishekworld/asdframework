@@ -5,6 +5,6 @@ import java.util.Date;
 
 
 
-public interface IPerson {
+public interface IPerson extends ICustomer{
 	public Date getBirthday();
 }

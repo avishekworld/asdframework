@@ -25,4 +25,7 @@ public class Personal extends Customer implements IPerson {
 		return birthdate;
 	}
 
+
+
+
 }

@@ -78,7 +78,7 @@ public class JDialogAddAccount extends javax.swing.JDialog {
 		JLabel8.setBounds(12, 60, 48, 24);
 		// }}
 
-		// setDefaulFormtData();
+		setDefaulFormtData();
 	}
 
 	// {{DECLARE_CONTROLS

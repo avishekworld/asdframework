@@ -1,6 +1,6 @@
 package framework.component;
 
-public class DefaultType extends Type {
+public class DefaultType extends AccountType {
 
 	public DefaultType()
 	{

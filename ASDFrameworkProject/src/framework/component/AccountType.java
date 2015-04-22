@@ -1,6 +1,6 @@
 package framework.component;
 
-public abstract class Type {
+public abstract class AccountType {
 	private String typeName;
 	private double interestRate;
 	private double maxTransactionLimit;
@@ -8,7 +8,7 @@ public abstract class Type {
 
 	
 
-	public Type(String typeName, double interestRate, double maxTransactionLimit,double lb) {
+	public AccountType(String typeName, double interestRate, double maxTransactionLimit,double lb) {
 		this.typeName = typeName;
 		this.interestRate = interestRate;
 		this.maxTransactionLimit = maxTransactionLimit;
@@ -42,15 +42,15 @@ public abstract class Type {
 		this.lowestBalanceAllowed = lowestBalanceAllowed;
 	}
 	
-	public boolean isTransactionValidate(Entry entry)
+	public boolean isTransactionValidate(TransactionEntry transactionEntry)
 	{
 		boolean shouldAllowed=true;
 		
-		if(entry.amount>maxTransactionLimit)
+		if(transactionEntry.amount>maxTransactionLimit)
 		{
 			shouldAllowed= false;
 		}
-		else if(entry.afterBalance<lowestBalanceAllowed)
+		else if(transactionEntry.afterBalance<lowestBalanceAllowed)
 		{
 			shouldAllowed=false;
 		}

@@ -12,7 +12,7 @@ public abstract class Customer implements ICustomer {
 	protected String zip;
 	protected String email;
 	private String customerId;
-	protected ArrayList<Account> accountList;
+	protected ArrayList<IAccount> accountList;
 	protected NotificationRule notificationRule;
 	protected String kindOfAccount;
 	public static String NAME_FIELD = "name";
@@ -26,7 +26,7 @@ public abstract class Customer implements ICustomer {
 		customerCounter++;
 		setCustomerId("" + customerCounter);
 
-		accountList = new ArrayList<Account>();
+		accountList = new ArrayList<IAccount>();
 
 		name = Data.get(Customer.NAME_FIELD);
 		street = Data.get(Customer.STREET_FIELD);
@@ -37,12 +37,12 @@ public abstract class Customer implements ICustomer {
 
 	}
 
-	public void addAccount(Account account) {
+	public void addAccount(IAccount account) {
 		account.setOwner(this);
 		accountList.add(account);
 	}
 
-	public void removeAccount(Account account) {
+	public void removeAccount(IAccount account) {
 		accountList.remove(account);
 	}
 
@@ -50,14 +50,14 @@ public abstract class Customer implements ICustomer {
 		PopServer.sendEmail(email);
 	}
 
-	public Account getLastAddedAccount() {
+	public IAccount getLastAddedAccount() {
 		return accountList.get(accountList.size() - 1);
 	}
 	
-public void update(Entry entry) {
+public void update(TransactionEntry transactionEntry) {
 		
 
-		String emailBody=entry.getEntryType()+" "+entry.getEntryAmount()+" Current Balance "+entry.getAfterBalance();
+		String emailBody=transactionEntry.getEntryType()+" "+transactionEntry.getEntryAmount()+" Current Balance "+transactionEntry.getAfterBalance();
 
 		
 		sendEmail(new Email(email, "Bank Notification", emailBody));
