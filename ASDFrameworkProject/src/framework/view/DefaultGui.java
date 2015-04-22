@@ -174,7 +174,7 @@ public class DefaultGui extends AGui {
             
 		    //Show the dialog for adding deposit amount for the current mane
 		    JDialog_Deposit dep = new JDialog_Deposit(myframe,accountNumber);
-		    dep.setBounds(430, 15, 275, 140);
+		    dep.setBounds(430, 15, 275, 180);
 		    dep.show();
         }
     		
@@ -193,7 +193,7 @@ public class DefaultGui extends AGui {
 
 		    //Show the dialog for adding withdraw amount for the current mane
 		    JDialog_Withdraw wd = new JDialog_Withdraw(myframe,accountNumber);
-		    wd.setBounds(430, 15, 275, 140);
+		    wd.setBounds(430, 15, 275, 180);
 		    wd.show();
         }
 		   
