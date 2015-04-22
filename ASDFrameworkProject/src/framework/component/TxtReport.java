@@ -19,7 +19,23 @@ public class TxtReport implements IReport {
 
 	@Override
 	public void Generate(String accountNumber, List<Entry> inputListOfEntry) {
-		// TODO Auto-generated method stub
+		
+		createFile(accountNumber);
+		
+		PrintWriter out = new PrintWriter(output);
+		
+		out.println("[ Date \t\t Befor Balance \t Issuer Name \t Account Type \t Amount \t New Amount ]");
+		
+		for (Entry entry: inputListOfEntry) {
+			
+			out.println(entry.toString());
+		}
+		
+		out.close();
+	}
+	
+	void createFile(String accountNumber)
+	{
 		File file = new File(dirPath);
 		if (file.exists()) {
 			// System.out.println("File Exists");
@@ -36,24 +52,22 @@ public class TxtReport implements IReport {
 			if (wasDirecotyMade) {
 				System.out.println("Direcoty Created @ "
 						+ file.getAbsolutePath());
+				try {
+					file = new File(dirPath + "/" + accountNumber + ".txt");
+					output = new BufferedWriter(new FileWriter(file, true));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			} else {
 				System.out
 						.println("Sorry could not create \"Reports\" directory");
 			}
 		}
 
-		for (Entry e : inputListOfEntry) {
-			writeEntryOnFile(e);
-		}
-
+		
 	}
 
-	protected void writeEntryOnFile(Entry entry) {
-		try (PrintWriter out = new PrintWriter(output)) {
-			out.println(entry.toString());
-			out.close();
-		}
-	}
 	/*
 	 * public static void main(String[] args) throws IOException { TxtReport tR
 	 * = new TxtReport("Readme"); Entry entry = new CreditEntry(100, 10, "sda");
