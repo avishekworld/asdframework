@@ -31,7 +31,7 @@
 <XPD:REF name="RepresentedClassifier">rrpQ9vZRQ0yXIwdG6FEDzwAA</XPD:REF>
 <XPD:ATTR name="#InteractionInstanceSets" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="InteractionInstanceSets[0]" type="UMLInteractionInstanceSet" guid="y+Gz4HJc/E2g/NGsu8pwuwAA">
-<XPD:ATTR name="Name" type="string">InteractionInstanceSet1</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">FW Personal Account Open</XPD:ATTR>
 <XPD:REF name="Context">FJCu2dHX3kuCvwHlrldBowAA</XPD:REF>
 <XPD:ATTR name="#OwnedDiagrams" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="OwnedDiagrams[0]" type="UMLSequenceDiagram" guid="4wtO1FE9rUCnmSR7JgKmQwAA">

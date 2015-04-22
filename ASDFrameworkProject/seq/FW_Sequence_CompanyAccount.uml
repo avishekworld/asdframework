@@ -123,7 +123,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="o9HoI3DpuEO93/MPuGV4kwAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="HZnjjZWP0E69yf3bZHL+6gAA">
 <XPD:ATTR name="FontStyle" type="integer">4</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">JDialog_AddCompAcc</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">JDialog_AddComAcc</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="5AIRoL9OyEyGynbOhvvinAAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -1234,7 +1234,7 @@
 <XPD:REF name="ReceivingStimuli[0]">AXn2nbupqECt/sDECosB7wAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="ParticipatingInstances[3]" type="UMLObject" guid="7IgPqW+Onk2TJMFqchqr/QAA">
-<XPD:ATTR name="Name" type="string">JDialog_AddCompAcc</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">JDialog_AddComAcc</XPD:ATTR>
 <XPD:REF name="CollaborationInstanceSet">FJCu2dHX3kuCvwHlrldBowAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">2</XPD:ATTR>
 <XPD:REF name="Views[0]">7md8jSTLUUSvaOi6LKnUFQAA</XPD:REF>
