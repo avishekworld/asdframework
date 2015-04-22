@@ -52,7 +52,6 @@ public class JDialogAddPerAcc extends JDialogAddAccount {
 	public void getCommonInputData() {
 		
 		super.getCommonInputData();
-		String dString=JTextField_BD.getText();
 		
 		guiData.put(PersonalCustomer.BIRTH_DATE_FIELD, JTextField_BD.getText());
 	}

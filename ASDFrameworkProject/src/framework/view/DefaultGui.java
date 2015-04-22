@@ -2,11 +2,13 @@ package framework.view;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+
 
 
 
@@ -27,10 +29,10 @@ import framework.component.TxtReport;
 
 public class DefaultGui extends AGui {
 
-	SymAction lSymAction;
-	DefaultTableModel model;
-	JButton JButton_PerAC;
-	JButton JButton_CompAC;
+	protected SymAction defaultGuiActionListener;
+	protected DefaultTableModel model;
+	protected JButton JButton_PerAC;
+	protected JButton JButton_CompAC;
 	JButton JButton_Deposit;
 	JButton JButton_Withdraw;
 	JButton JButton_Addinterest;
@@ -42,7 +44,7 @@ public class DefaultGui extends AGui {
 	}
 
 	public void generateCreationButtons() {
-		lSymAction = new SymAction();
+		defaultGuiActionListener = new SymAction();
 
 		JButton_PerAC = new JButton("Add personal account");
 		JButton_PerAC.setPreferredSize(new Dimension(BUTTON_WIDTH,
@@ -55,9 +57,9 @@ public class DefaultGui extends AGui {
 		JButton_GenerateReport.setPreferredSize(new Dimension(BUTTON_WIDTH,
 				BUTTON_HEIGHT));
 
-		JButton_PerAC.addActionListener(lSymAction);
-		JButton_CompAC.addActionListener(lSymAction);
-		JButton_GenerateReport.addActionListener(lSymAction);
+		JButton_PerAC.addActionListener(defaultGuiActionListener);
+		JButton_CompAC.addActionListener(defaultGuiActionListener);
+		JButton_GenerateReport.addActionListener(defaultGuiActionListener);
 
 		creationButtonPanel.add(JButton_PerAC);
 		creationButtonPanel.add(JButton_CompAC);
@@ -74,13 +76,19 @@ public class DefaultGui extends AGui {
 		JButton_Withdraw.setPreferredSize(new Dimension(BUTTON_WIDTH,
 				BUTTON_HEIGHT));
 
-		JButton_Deposit.addActionListener(lSymAction);
-		JButton_Withdraw.addActionListener(lSymAction);
+		JButton_Addinterest = new JButton("Add Interest");
+		JButton_Addinterest.setPreferredSize(new Dimension(BUTTON_WIDTH,
+				BUTTON_HEIGHT));
+		
+		JButton_Deposit.addActionListener(defaultGuiActionListener);
+		JButton_Withdraw.addActionListener(defaultGuiActionListener);
+		JButton_Addinterest.addActionListener(defaultGuiActionListener);
 
 		operationButtonPanel.add(JButton_Deposit);
 		operationButtonPanel.add(Box.createVerticalStrut(V_GAP));
 		operationButtonPanel.add(JButton_Withdraw);
 		operationButtonPanel.add(Box.createVerticalStrut(V_GAP));
+		operationButtonPanel.add(JButton_Addinterest);
 
 	}
 
@@ -112,6 +120,8 @@ public class DefaultGui extends AGui {
 				JButtonWithdraw_actionPerformed(event);
 			else if (object == JButton_GenerateReport)
 				JButtonGenerateReport_actionPerformed(event);
+			else if (object == JButton_Addinterest)
+				JButtonAddinterest_actionPerformed(event);
 
 		}
 	}
@@ -183,6 +193,13 @@ public class DefaultGui extends AGui {
 
 		
 		
+	}
+	
+	private void JButtonAddinterest_actionPerformed(ActionEvent event) {
+		
+		controller.addInterest();
+		
+		modelUpdated();
 	}
 
 	void JButtonWithdraw_actionPerformed(java.awt.event.ActionEvent event)
