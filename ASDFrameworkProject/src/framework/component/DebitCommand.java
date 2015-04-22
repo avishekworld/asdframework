@@ -2,11 +2,11 @@ package framework.component;
 
 public class DebitCommand implements ICommand {
 
-	FinanceHandler controller;
+	FinanceSystem controller;
 	String amount;
 	String accoutnNumber;
 
-	public DebitCommand(FinanceHandler controller, String accoutnNumber,
+	public DebitCommand(FinanceSystem controller, String accoutnNumber,
 			String amount) {
 		this.controller = controller;
 		this.amount = amount;

@@ -12,7 +12,7 @@ import framework.model.IModel;
 import framework.view.AGui;
 import framework.view.DefaultGui;
 
-public class FinanceHandler {
+public class FinanceSystem {
 	protected String name;
 	protected IModel model;
 
@@ -42,7 +42,7 @@ public class FinanceHandler {
 		return model.getAllAcounts();
 	}
 
-	public FinanceHandler() {
+	public FinanceSystem() {
 	
 	}
 
@@ -68,7 +68,7 @@ public class FinanceHandler {
 
 	public static void main(String[] args) {
 
-		FinanceHandler controller = new FinanceHandler();
+		FinanceSystem controller = new FinanceSystem();
 		
 		IModel model = new DefaultModel();
 		AGui gui = new DefaultGui("Financial App", controller);
