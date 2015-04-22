@@ -7,8 +7,10 @@ public class DebitEntry extends TransactionEntry {
 		// TODO Auto-generated constructor stub
 	}
 
-	public double getNewAmount() {
-		afterBalance = beforeBalance - getEntryAmount();
-		return afterBalance;
+	public void updateNewBalance() {
+		
+		newBalance = previousBalance- amount;
+		
 	}
+
 }

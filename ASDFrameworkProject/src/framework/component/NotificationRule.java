@@ -6,7 +6,7 @@ package framework.component;
 
 public interface NotificationRule
 {
-	boolean ruleMatch(TransactionEntry transactionEntry);
+	boolean ruleMatch(ITransactionEntry transactionEntry);
 }
 
 

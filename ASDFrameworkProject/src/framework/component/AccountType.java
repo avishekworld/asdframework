@@ -42,15 +42,15 @@ public abstract class AccountType {
 		this.lowestBalanceAllowed = lowestBalanceAllowed;
 	}
 	
-	public boolean isTransactionValidate(TransactionEntry transactionEntry)
+	public boolean isTransactionValidate(ITransactionEntry transactionEntry)
 	{
 		boolean shouldAllowed=true;
 		
-		if(transactionEntry.amount>maxTransactionLimit)
+		if(transactionEntry.getEntryAmount()>maxTransactionLimit)
 		{
 			shouldAllowed= false;
 		}
-		else if(transactionEntry.afterBalance<lowestBalanceAllowed)
+		else if(transactionEntry.getNewBalance()<lowestBalanceAllowed)
 		{
 			shouldAllowed=false;
 		}

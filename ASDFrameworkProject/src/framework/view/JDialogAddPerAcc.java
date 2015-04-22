@@ -3,7 +3,7 @@ package framework.view;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import framework.component.Personal;
+import framework.component.PersonalCustomer;
 import framework.component.PersonalAccountOpenCommand;
 import framework.component.SimpleTypeFactory;
 
@@ -45,13 +45,13 @@ public class JDialogAddPerAcc extends JDialogAddAccount {
 	public void getCommonInputData() {
 		super.getCommonInputData();
 
-		guiData.put(Personal.BIRTH_DATE_FIELD, JTextField_BD.getText());
+		guiData.put(PersonalCustomer.BIRTH_DATE_FIELD, JTextField_BD.getText());
 	}
 
 	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
 		getCommonInputData();
 
-		guiData.put(Personal.BIRTH_DATE_FIELD, JTextField_BD.getText());
+		guiData.put(PersonalCustomer.BIRTH_DATE_FIELD, JTextField_BD.getText());
 
 		String type = SimpleTypeFactory.getDefaultTypeFactory().getTypes()[0];
 

@@ -8,11 +8,11 @@ public interface ICustomer {
 
 	public void sendEmail(Email email);
 
-	public String getKindOfAccount();
+	public String getCustomerType();
 	
 	public NotificationRule getNotificationRule();
 	
-	public void update(TransactionEntry transactionEntry);
+	public void update(ITransactionEntry transactionEntry);
 	
 	public String getName();
 	

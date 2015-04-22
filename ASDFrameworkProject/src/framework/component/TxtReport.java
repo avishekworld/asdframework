@@ -18,7 +18,7 @@ public class TxtReport implements IReport {
 	}
 
 	@Override
-	public void Generate(String accountNumber, List<TransactionEntry> inputListOfEntry) {
+	public void Generate(String accountNumber, List<ITransactionEntry> inputListOfEntry) {
 		
 		createFile(accountNumber);
 		
@@ -26,7 +26,7 @@ public class TxtReport implements IReport {
 		
 		out.println("[ Date \t\t Befor Balance \t Issuer Name \t Account Type \t Amount \t New Amount ]");
 		
-		for (TransactionEntry transactionEntry: inputListOfEntry) {
+		for (ITransactionEntry transactionEntry: inputListOfEntry) {
 			
 			out.println(transactionEntry.toString());
 		}

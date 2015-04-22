@@ -13,20 +13,20 @@ public class Account implements IAccount{
 	private double accountBalance;
 	private ICustomer owner;
 	private String accountNumber;
-	public List<TransactionEntry> transactionEntry;
+	public List<ITransactionEntry> transactionEntry;
 	public Date accountOpenDate;
 
 	public static String ACC_NUM_FIELD = "accountno";
 	public static String ACC_TYPE_FIELD = "accounttype";
 
 	public Account(HashMap<String, String> data, AccountType accountType) {
-		transactionEntry = new LinkedList<TransactionEntry>();
+		transactionEntry = new LinkedList<ITransactionEntry>();
 
 		accountCounter++;
 		setAccountNumber("" + accountCounter);
 
 		accountNumber = data.get(Account.ACC_NUM_FIELD);
-		transactionEntry = new LinkedList<TransactionEntry>();
+		transactionEntry = new LinkedList<ITransactionEntry>();
 
 		this.accountType = accountType;
 
@@ -36,12 +36,12 @@ public class Account implements IAccount{
 	}
 
 	public void doDebit(double amount) {
-		TransactionEntry newEntry = new DebitEntry(getCurrentBalance(), amount,
+		ITransactionEntry newEntry = new DebitEntry(getCurrentBalance(), amount,
 				getAccountNumber());
 
 		if(accountType.isTransactionValidate(newEntry))
 		{
-			accountBalance = newEntry.getNewAmount();
+			accountBalance = newEntry.getNewBalance();
 
 			transactionEntry.add(newEntry);
 
@@ -64,7 +64,7 @@ public class Account implements IAccount{
 		TransactionEntry newEntry = new CreditEntry(getCurrentBalance(), amount,
 				getAccountNumber());
 
-		accountBalance = newEntry.getNewAmount();
+		accountBalance = newEntry.getNewBalance();
 
 		transactionEntry.add(newEntry);
 
@@ -79,7 +79,7 @@ public class Account implements IAccount{
 		TransactionEntry newEntry = new CreditEntry(getCurrentBalance(),
 				(accountType.getInterestRate()/100) * getCurrentBalance(),
 				"Add Interest");
-		accountBalance = newEntry.getNewAmount();
+		accountBalance = newEntry.getNewBalance();
 		transactionEntry.add(newEntry);
 	}
 
@@ -94,14 +94,14 @@ public class Account implements IAccount{
 	}
 
 	public void generateReport(Date date1, Date date2, IReport reportType) {
-		List<TransactionEntry> reportEntryList = new LinkedList<TransactionEntry>();
+		List<ITransactionEntry> reportEntryList = new LinkedList<ITransactionEntry>();
 		date1.setHours(0);
 		date1.setMinutes(0);
 		date1.setSeconds(0);
 		date2.setHours(23);
 		date2.setMinutes(59);
 		date2.setSeconds(59);
-		for (TransactionEntry e : transactionEntry) {
+		for (ITransactionEntry e : transactionEntry) {
 			Date ev = e.getDate();
 			if ((date1.equals(e.getDate()) || date2.equals(e.getDate()))
 					|| (date1.before(e.getDate()) && date2.after(e.getDate()))) {
@@ -120,7 +120,7 @@ public class Account implements IAccount{
 		date2.setHours(23);
 		date2.setMinutes(59);
 		date2.setSeconds(59);
-		for (TransactionEntry e : transactionEntry) {
+		for (ITransactionEntry e : transactionEntry) {
 			if ((date1.equals(e.getDate()) && date2.equals(e.getDate()))
 					|| (date1.after(e.getDate()) && date2.before(e.getDate()))) {
 
@@ -142,7 +142,7 @@ public class Account implements IAccount{
 		date2.setHours(23);
 		date2.setMinutes(59);
 		date2.setSeconds(59);
-		for (TransactionEntry e : transactionEntry) {
+		for (ITransactionEntry e : transactionEntry) {
 			if ((date1.equals(e.getDate()) && date2.equals(e.getDate()))
 					|| (date1.after(e.getDate()) && date2.before(e.getDate()))) {
 

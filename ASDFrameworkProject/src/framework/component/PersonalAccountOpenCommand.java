@@ -18,7 +18,7 @@ public class PersonalAccountOpenCommand implements ICommand {
 	@Override
 	public void exceute() {
 
-		Personal personalCustomer = new Personal(guiData);
+		PersonalCustomer personalCustomer = new PersonalCustomer(guiData);
 		Account account = new Account(guiData,accountType);
 		personalCustomer.addAccount(account);
 		controller.addCustomer(personalCustomer);

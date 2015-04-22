@@ -18,7 +18,7 @@ public class CompanyAccountOpenCommand implements ICommand {
 	@Override
 	public void exceute() {
 		
-		Company companyCustomer=new Company(guiData);
+		CompanyCustomer companyCustomer=new CompanyCustomer(guiData);
 		IAccount account=new Account(guiData,accountType);
 		companyCustomer.addAccount(account);
 		controller.addCustomer(companyCustomer);

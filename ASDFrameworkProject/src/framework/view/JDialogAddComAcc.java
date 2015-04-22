@@ -3,7 +3,7 @@ package framework.view;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import framework.component.Company;
+import framework.component.CompanyCustomer;
 import framework.component.CompanyAccountOpenCommand;
 import framework.component.SimpleTypeFactory;
 
@@ -45,7 +45,7 @@ public class JDialogAddComAcc extends JDialogAddAccount {
 	public void getCommonInputData() {
 		super.getCommonInputData();
 
-		guiData.put(Company.NO_OF_EMPLOYEE_FIELD, JTextField_NoOfEmp.getText());
+		guiData.put(CompanyCustomer.NO_OF_EMPLOYEE_FIELD, JTextField_NoOfEmp.getText());
 	}
 
 	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {

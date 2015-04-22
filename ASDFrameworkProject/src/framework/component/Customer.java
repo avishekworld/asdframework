@@ -14,7 +14,7 @@ public abstract class Customer implements ICustomer {
 	private String customerId;
 	protected ArrayList<IAccount> accountList;
 	protected NotificationRule notificationRule;
-	protected String kindOfAccount;
+	protected String customerType;
 	public static String NAME_FIELD = "name";
 	public static String STREET_FIELD = "street";
 	public static String CITY_FIELD = "city";
@@ -23,8 +23,10 @@ public abstract class Customer implements ICustomer {
 	public static String EMAIL_FIELD = "email";
 
 	public Customer(HashMap<String, String> Data) {
+		
 		customerCounter++;
-		setCustomerId("" + customerCounter);
+		
+		customerId=customerCounter+"";
 
 		accountList = new ArrayList<IAccount>();
 
@@ -54,10 +56,10 @@ public abstract class Customer implements ICustomer {
 		return accountList.get(accountList.size() - 1);
 	}
 	
-public void update(TransactionEntry transactionEntry) {
+public void update(ITransactionEntry transactionEntry) {
 		
 
-		String emailBody=transactionEntry.getEntryType()+" "+transactionEntry.getEntryAmount()+" Current Balance "+transactionEntry.getAfterBalance();
+		String emailBody=transactionEntry.getEntryType()+" "+transactionEntry.getEntryType()+" Current Balance "+transactionEntry.getNewBalance();
 
 		
 		sendEmail(new Email(email, "Bank Notification", emailBody));
@@ -74,10 +76,6 @@ public void update(TransactionEntry transactionEntry) {
 
 	public String getCustomerId() {
 		return customerId;
-	}
-
-	private void setCustomerId(String customerId) {
-		this.customerId = customerId;
 	}
 
 
@@ -102,8 +100,8 @@ public void update(TransactionEntry transactionEntry) {
 	
 	
 
-	public String getKindOfAccount() {
-		return kindOfAccount;
+	public String getCustomerType() {
+		return customerType;
 	}
 
 	@Override
