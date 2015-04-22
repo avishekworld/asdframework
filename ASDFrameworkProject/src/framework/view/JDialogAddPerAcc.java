@@ -18,7 +18,7 @@ public class JDialogAddPerAcc extends JDialogAddAccount {
 		super(myframe);
 
 		JTextField_BD = new JTextField();
-		JTextField_BD.setText("10/11/1988");
+		// JTextField_BD.setText("10/11/1988");
 		getContentPane().add(JTextField_BD);
 		JTextField_BD.setBounds(84, 204, 156, 20);
 
