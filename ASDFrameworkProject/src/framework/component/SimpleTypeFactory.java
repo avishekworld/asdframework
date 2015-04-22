@@ -2,8 +2,8 @@ package framework.component;
 
 public class SimpleTypeFactory {
 
-	public static TypeFactory getDefaultTypeFactory()
+	public static AccountTypeFactory getDefaultTypeFactory()
 	{
-		return new DefaultTypeFactory();
+		return new DefaultAccountTypeFactory();
 	}
 }
