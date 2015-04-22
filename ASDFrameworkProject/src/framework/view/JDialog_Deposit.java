@@ -1,5 +1,7 @@
 package framework.view;
 
+import javax.swing.JOptionPane;
+
 import framework.component.CreditCommand;
 import framework.component.ICommand;
 
@@ -76,17 +78,31 @@ public class JDialog_Deposit extends javax.swing.JDialog {
 	}
 
 	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
+		
 		String accountNumber = JTextField_Account_Number.getText();
+		
+		
 		String amount = JTextField_Deposit.getText();
 		
-		// System.out.println("" + amount);
-		command = new CreditCommand(parentframe.getController(), accountNumber,
-				amount);
-		command.exceute();
+		try
+		{
+			Double.parseDouble(amount);
+		  
+		  	command = new CreditCommand(parentframe.getController(), accountNumber,
+					amount);
+		  	command.exceute();
 
-		parentframe.modelUpdated();
+			parentframe.modelUpdated();
+			
+			dispose();
+		}
+		catch(NumberFormatException e)
+		{
+		  JOptionPane.showMessageDialog(null, "Insert Amount");
+		}
 		
-		dispose();
+		
+		
 	}
 
 	void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event) {

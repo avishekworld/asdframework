@@ -12,9 +12,9 @@ public abstract class Customer implements ICustomer {
 	protected String zip;
 	protected String email;
 	private String customerId;
-	protected ArrayList<Account> accountList;
+	protected ArrayList<IAccount> accountList;
 	protected NotificationRule notificationRule;
-	protected String kindOfAccount;
+	protected String customerType;
 	public static String NAME_FIELD = "name";
 	public static String STREET_FIELD = "street";
 	public static String CITY_FIELD = "city";
@@ -23,10 +23,12 @@ public abstract class Customer implements ICustomer {
 	public static String EMAIL_FIELD = "email";
 
 	public Customer(HashMap<String, String> Data) {
+		
 		customerCounter++;
-		setCustomerId("" + customerCounter);
+		
+		customerId=customerCounter+"";
 
-		accountList = new ArrayList<Account>();
+		accountList = new ArrayList<IAccount>();
 
 		name = Data.get(Customer.NAME_FIELD);
 		street = Data.get(Customer.STREET_FIELD);
@@ -37,12 +39,12 @@ public abstract class Customer implements ICustomer {
 
 	}
 
-	public void addAccount(Account account) {
+	public void addAccount(IAccount account) {
 		account.setOwner(this);
 		accountList.add(account);
 	}
 
-	public void removeAccount(Account account) {
+	public void removeAccount(IAccount account) {
 		accountList.remove(account);
 	}
 
@@ -50,14 +52,14 @@ public abstract class Customer implements ICustomer {
 		PopServer.sendEmail(email);
 	}
 
-	public Account getLastAddedAccount() {
+	public IAccount getLastAddedAccount() {
 		return accountList.get(accountList.size() - 1);
 	}
 	
-public void update(Entry entry) {
+public void update(ITransactionEntry transactionEntry) {
 		
 
-		String emailBody=entry.getEntryType()+" "+entry.getEntryAmount()+" Current Balance "+entry.getAfterBalance();
+		String emailBody=transactionEntry.getEntryType()+" "+transactionEntry.getEntryAmount()+" Current Balance "+transactionEntry.getNewBalance();
 
 		
 		sendEmail(new Email(email, "Bank Notification", emailBody));
@@ -74,10 +76,6 @@ public void update(Entry entry) {
 
 	public String getCustomerId() {
 		return customerId;
-	}
-
-	private void setCustomerId(String customerId) {
-		this.customerId = customerId;
 	}
 
 
@@ -102,8 +100,8 @@ public void update(Entry entry) {
 	
 	
 
-	public String getKindOfAccount() {
-		return kindOfAccount;
+	public String getCustomerType() {
+		return customerType;
 	}
 
 	@Override

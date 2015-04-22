@@ -2,26 +2,37 @@ package framework.component;
 
 import java.util.HashMap;
 
+import javax.swing.JOptionPane;
+
 public class PersonalAccountOpenCommand implements ICommand {
 
 	FinanceHandler controller;
 	HashMap<String, String> guiData;
-	Type accountType;
+	AccountType accountType;
 
 	public PersonalAccountOpenCommand(FinanceHandler controller,
-			HashMap<String, String> guiData,Type type) {
+			HashMap<String, String> guiData,AccountType accountType) {
 		this.controller = controller;
 		this.guiData = guiData;
-		accountType=type;
+		this.accountType=accountType;
 	}
 
 	@Override
 	public void exceute() {
 
-		Personal personalCustomer = new Personal(guiData);
-		Account account = new Account(guiData,accountType);
-		personalCustomer.addAccount(account);
-		controller.addCustomer(personalCustomer);
+		if(controller.getAccount(guiData.get(Account.ACC_NUM_FIELD))==null)
+		{
+			PersonalCustomer personalCustomer = new PersonalCustomer(guiData);
+			Account account = new Account(guiData,accountType);
+			personalCustomer.addAccount(account);
+			controller.addCustomer(personalCustomer);
+			
+			//JOptionPane.showMessageDialog(null, "Account "+guiData.get(Account.ACC_NUM_FIELD)+" created");
+		}
+		else {
+			
+			JOptionPane.showMessageDialog(null, "Account "+guiData.get(Account.ACC_NUM_FIELD)+" already Exits");
+		}
 
 	}
 

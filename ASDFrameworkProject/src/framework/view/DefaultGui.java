@@ -12,6 +12,7 @@ import java.util.List;
 
 
 
+
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -20,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 import framework.component.Account;
 import framework.component.Customer;
 import framework.component.FinanceHandler;
+import framework.component.IAccount;
 import framework.component.TxtReport;
 
 
@@ -120,15 +122,15 @@ public class DefaultGui extends AGui {
 		
 		model.setRowCount(0);
 		
-		List<Account> allAccounts=controller.getAllAccount();
+		List<IAccount> allAccounts=controller.getAllAccount();
 		
-		for(Account account:allAccounts)
+		for(IAccount account:allAccounts)
 		{
 			Object[] rawData=new Object[5];
 			rawData[0] = account.getAccountNumber();
 			rawData[1] = account.getOwner().getName();
 			rawData[2] = account.getOwner().getCity();
-			rawData[3] = account.getOwner().getKindOfAccount();
+			rawData[3] = account.getOwner().getCustomerType();
 			rawData[4] = account.getAccountBalance();
 	        model.addRow(rawData);
 		}

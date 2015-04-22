@@ -16,7 +16,7 @@ public class DebitCommand implements ICommand {
 	@Override
 	public void exceute() {
 
-		Account account = controller.getAccount(accoutnNumber);
+		IAccount account = controller.getAccount(accoutnNumber);
 		account.doDebit(Double.parseDouble(amount));
 
 	}

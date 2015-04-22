@@ -3,7 +3,7 @@ package framework.component;
 public class CompanyNotificationRule implements NotificationRule {
 
 	@Override
-	public boolean ruleMatch(Entry entry) {
+	public boolean ruleMatch(ITransactionEntry transactionEntry) {
 		return true;
 	}
 }

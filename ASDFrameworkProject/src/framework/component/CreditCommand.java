@@ -16,7 +16,7 @@ public class CreditCommand implements ICommand {
 	@Override
 	public void exceute() {
 
-		Account account = controller.getAccount(accoutnNumber);
+		IAccount account = controller.getAccount(accoutnNumber);
 		account.doCredit(Double.parseDouble(amount));
 
 	}

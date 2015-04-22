@@ -1,9 +1,13 @@
 package framework.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import framework.component.Company;
+import framework.component.CompanyCustomer;
 import framework.component.CompanyAccountOpenCommand;
 import framework.component.SimpleTypeFactory;
 
@@ -18,7 +22,7 @@ public class JDialogAddComAcc extends JDialogAddAccount {
 
 		JTextField_NoOfEmp = new JTextField();
 
-		// JTextField_NoOfEmp.setText("8");
+		JTextField_NoOfEmp.setText("8");
 		getContentPane().add(JTextField_NoOfEmp);
 		JTextField_NoOfEmp.setBounds(84, 204, 156, 20);
 
@@ -43,24 +47,47 @@ public class JDialogAddComAcc extends JDialogAddAccount {
 	}
 
 	public void getCommonInputData() {
+		
 		super.getCommonInputData();
 
-		guiData.put(Company.NO_OF_EMPLOYEE_FIELD, JTextField_NoOfEmp.getText());
+		guiData.put(CompanyCustomer.NO_OF_EMPLOYEE_FIELD, JTextField_NoOfEmp.getText());
 	}
 
 	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
+		
 		getCommonInputData();
+		
+		boolean allInputOK=inputValidate(new ArrayList<String>(guiData.values()));
 
-		String type = SimpleTypeFactory.getDefaultTypeFactory().getTypes()[0];
+		
+		if(allInputOK){
+			
+			try
+			{
+				Double.parseDouble(guiData.get(CompanyCustomer.NO_OF_EMPLOYEE_FIELD));
+			}
+			catch(NumberFormatException e)
+			{
+			    JOptionPane.showMessageDialog(null, "Insert Number of Employee");
+			  
+			    return;
+			}
 
-		command = new CompanyAccountOpenCommand(parentframe.getController(),
+			String type = SimpleTypeFactory.getDefaultTypeFactory().getTypes()[0];
+
+			command = new CompanyAccountOpenCommand(parentframe.getController(),
 				guiData, SimpleTypeFactory.getDefaultTypeFactory()
 						.getType(type));
-		command.exceute();
+			command.exceute();
 
-		parentframe.modelUpdated();
+			parentframe.modelUpdated();
 
-		dispose();
+			dispose();
+		}
+		else 
+		{
+			JOptionPane.showMessageDialog(null, "Please Input All Data");
+		}
 	}
 
 	void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event) {

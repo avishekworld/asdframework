@@ -8,7 +8,7 @@ public class DefaultTypeFactory extends TypeFactory {
 	}
 
 	@Override
-	public Type getType(String typeName) {
+	public AccountType getType(String typeName) {
 		
 			return new DefaultType();
 		

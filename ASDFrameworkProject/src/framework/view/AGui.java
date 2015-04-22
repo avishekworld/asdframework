@@ -64,6 +64,7 @@ public abstract class AGui  extends JFrame
 		loadViews();
 		
 		setVisible(true);
+		setResizable(false);
 		
 		
 	}
