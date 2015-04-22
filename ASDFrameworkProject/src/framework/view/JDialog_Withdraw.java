@@ -95,12 +95,22 @@ public class JDialog_Withdraw extends javax.swing.JDialog
         String accountNumber=JTextField_Account_Number.getText();
         String amount=JTextField_AMT.getText();
         
-        command=new DebitCommand(parentframe.getController(), accountNumber, amount);
-        command.exceute();
-        
-        parentframe.modelUpdated();
-        
-		dispose();
+        try
+		{
+			Double.parseDouble(amount);
+		  
+		  	command = new CreditCommand(parentframe.getController(), accountNumber,
+					amount);
+		  	command.exceute();
+
+			parentframe.modelUpdated();
+			
+			dispose();
+		}
+		catch(NumberFormatException e)
+		{
+		  JOptionPane.showMessageDialog(null, "Insert Amount");
+		}
 	}
 
 	void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event)

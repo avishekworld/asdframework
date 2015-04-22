@@ -9,6 +9,7 @@ import framework.component.IAccount;
 import framework.component.ICustomer;
 
 public interface IModel {
+	
 	public ICustomer getCustomer(String customerId);
 
 	public IAccount getAccount(String accountId);

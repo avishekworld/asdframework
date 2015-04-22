@@ -9,6 +9,7 @@ import framework.component.IAccount;
 import framework.component.ICustomer;
 
 public class DefaultModel implements IModel {
+	
 	public HashMap<String, ICustomer> customerList;
 	public HashMap<String, IAccount> accountList;
 
@@ -50,8 +51,7 @@ public class DefaultModel implements IModel {
 
 	@Override
 	public List<ICustomer> getAllCustomers() {
-
-		
+	
 		List<ICustomer> allCustomers = new ArrayList<ICustomer>(customerList.values());
 		
 		return allCustomers;
