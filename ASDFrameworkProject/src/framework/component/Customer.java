@@ -59,7 +59,7 @@ public abstract class Customer implements ICustomer {
 public void update(ITransactionEntry transactionEntry) {
 		
 
-		String emailBody=transactionEntry.getEntryType()+" "+transactionEntry.getEntryType()+" Current Balance "+transactionEntry.getNewBalance();
+		String emailBody=transactionEntry.getEntryType()+" "+transactionEntry.getEntryAmount()+" Current Balance "+transactionEntry.getNewBalance();
 
 		
 		sendEmail(new Email(email, "Bank Notification", emailBody));

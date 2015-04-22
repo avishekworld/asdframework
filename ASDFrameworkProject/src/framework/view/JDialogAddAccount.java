@@ -4,7 +4,8 @@ package framework.view;
  A basic implementation of the JDialog class.
  */
 
-import java.util.HashMap;
+
+import java.util.*;
 
 import framework.component.Account;
 import framework.component.Customer;
@@ -110,6 +111,21 @@ public class JDialogAddAccount extends javax.swing.JDialog {
 		JTextField_ST.setText("Iowa");
 		JTextField_EM.setText("name@email.com");
 
+	}
+	
+	public boolean inputValidate(List<String> allInput)
+	{
+		boolean isInputsOk=true;
+		
+		for(String input:allInput)
+		{
+			if(input.equals(""))
+			{
+				isInputsOk=false;
+			}
+		}
+		
+		return isInputsOk;
 	}
 
 	public void getCommonInputData() {
