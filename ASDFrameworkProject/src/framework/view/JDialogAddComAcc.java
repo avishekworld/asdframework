@@ -21,7 +21,7 @@ public class JDialogAddComAcc extends JDialogAddAccount {
 
 		JTextField_NoOfEmp = new JTextField();
 
-		JTextField_NoOfEmp.setText("8");
+		//JTextField_NoOfEmp.setText("8");
 		getContentPane().add(JTextField_NoOfEmp);
 		JTextField_NoOfEmp.setBounds(84, 204, 156, 20);
 
