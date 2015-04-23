@@ -16,8 +16,11 @@ import javax.swing.table.DefaultTableModel;
 import framework.component.Account;
 import framework.component.CreditCommand;
 import framework.component.Customer;
+
 import framework.component.DebitCommand;
-import framework.component.FinanceHandler;
+import framework.component.FinanceSystem;
+
+import framework.component.FinanceSystem;
 import framework.component.IAccount;
 import framework.component.ITransactionCommand;
 import framework.component.TxtReport;
@@ -34,7 +37,7 @@ public class DefaultGui extends AGui {
 	protected JButton JButton_Addinterest;
 	protected JButton JButton_GenerateReport;
 
-	public DefaultGui(String title, FinanceHandler controller) {
+	public DefaultGui(String title, FinanceSystem controller) {
 		super(title, controller);
 
 	}

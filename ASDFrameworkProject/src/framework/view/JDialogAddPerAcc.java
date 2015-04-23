@@ -8,11 +8,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import framework.component.CompanyAccountOpenCommand;
-import framework.component.CompanyCustomer;
-import framework.component.PersonalCustomer;
 import framework.component.PersonalAccountOpenCommand;
-import framework.component.SimpleTypeFactory;
+import framework.component.PersonalCustomer;
+import framework.component.SimpleAccountTypeFactory;
 
 public class JDialogAddPerAcc extends JDialogAddAccount {
 
@@ -51,43 +49,54 @@ public class JDialogAddPerAcc extends JDialogAddAccount {
 	}
 
 	public void getCommonInputData() {
-		
+
 		super.getCommonInputData();
-		
+
 		guiData.put(PersonalCustomer.BIRTH_DATE_FIELD, JTextField_BD.getText());
 	}
 	
 
+	public static boolean isDateValid(String date) {
+		String DATE_FORMAT = "mm/dd/yyyy";
+		try {
+			DateFormat df = new SimpleDateFormat(DATE_FORMAT);
+			df.setLenient(false);
+			df.parse(date);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
 
 	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
-		
-		getCommonInputData();
-		
-		boolean allInputOK=inputValidate(new ArrayList<String>(guiData.values()));
 
-		if(allInputOK){
-			
-			if(isDateValid(guiData.get(PersonalCustomer.BIRTH_DATE_FIELD))==false)
-			{
-			
-			    JOptionPane.showMessageDialog(null, "Insert date as mm/dd/yyyy");
-			  
-			    return;
+		getCommonInputData();
+
+		boolean allInputOK = inputValidate(new ArrayList<String>(
+				guiData.values()));
+
+		if (allInputOK) {
+
+			if (isDateValid(guiData.get(PersonalCustomer.BIRTH_DATE_FIELD)) == false) {
+
+				JOptionPane
+						.showMessageDialog(null, "Insert date as mm/dd/yyyy");
+
+				return;
 			}
 
-			String type = SimpleTypeFactory.getDefaultTypeFactory().getTypes()[0];
+			String type = SimpleAccountTypeFactory.getDefaultTypeFactory()
+					.getAccountTypes()[0];
 
-			command = new PersonalAccountOpenCommand(parentframe.getController(),
-					guiData, SimpleTypeFactory.getDefaultTypeFactory()
-							.getType(type));
+			command = new PersonalAccountOpenCommand(
+					parentframe.getController(), guiData, SimpleAccountTypeFactory
+							.getDefaultTypeFactory().getAccountType(type));
 			command.exceute();
 
 			parentframe.modelUpdated();
 
 			dispose();
-		}
-		else 
-		{
+		} else {
 			JOptionPane.showMessageDialog(null, "Please Input All Data");
 		}
 	}

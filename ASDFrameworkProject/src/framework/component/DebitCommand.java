@@ -2,11 +2,13 @@ package framework.component;
 
 public class DebitCommand implements ITransactionCommand {
 
-	FinanceHandler controller;
+	FinanceSystem controller;
 	String amount;
 	String accoutnNumber;
 
-	public DebitCommand(FinanceHandler controller, String accoutnNumber) {
+	public DebitCommand(FinanceSystem controller, String accoutnNumber) {
+
+
 		this.controller = controller;
 		this.accoutnNumber = accoutnNumber;
 	}

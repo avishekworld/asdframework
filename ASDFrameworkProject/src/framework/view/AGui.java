@@ -15,7 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import framework.component.FinanceHandler;
+import framework.component.FinanceSystem;
 
 
 
@@ -35,9 +35,9 @@ public abstract class AGui  extends JFrame
     protected JPanel creationButtonPanel;
     protected JPanel tablePanel;
     protected JPanel operationButtonPanel;
-    protected FinanceHandler controller;
+    protected FinanceSystem controller;
     
-	public AGui(String title,FinanceHandler controller)
+	public AGui(String title,FinanceSystem controller)
 	{
 		this.controller=controller;
 		myframe=this;
@@ -106,7 +106,7 @@ public abstract class AGui  extends JFrame
 	
 	public abstract DefaultTableModel getTableModel();
 	
-	public FinanceHandler getController() {
+	public FinanceSystem getController() {
 		return controller;
 	}
 	

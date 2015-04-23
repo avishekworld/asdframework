@@ -6,11 +6,11 @@ import javax.swing.JOptionPane;
 
 public class PersonalAccountOpenCommand implements ICommand {
 
-	FinanceHandler controller;
+	FinanceSystem controller;
 	HashMap<String, String> guiData;
 	AccountType accountType;
 
-	public PersonalAccountOpenCommand(FinanceHandler controller,
+	public PersonalAccountOpenCommand(FinanceSystem controller,
 			HashMap<String, String> guiData,AccountType accountType) {
 		this.controller = controller;
 		this.guiData = guiData;

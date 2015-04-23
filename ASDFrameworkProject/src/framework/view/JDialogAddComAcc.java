@@ -1,15 +1,14 @@
 package framework.view;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import framework.component.CompanyCustomer;
 import framework.component.CompanyAccountOpenCommand;
-import framework.component.SimpleTypeFactory;
+import framework.component.CompanyCustomer;
+import framework.component.SimpleAccountTypeFactory;
 
 public class JDialogAddComAcc extends JDialogAddAccount {
 
@@ -47,45 +46,44 @@ public class JDialogAddComAcc extends JDialogAddAccount {
 	}
 
 	public void getCommonInputData() {
-		
+
 		super.getCommonInputData();
 
-		guiData.put(CompanyCustomer.NO_OF_EMPLOYEE_FIELD, JTextField_NoOfEmp.getText());
+		guiData.put(CompanyCustomer.NO_OF_EMPLOYEE_FIELD,
+				JTextField_NoOfEmp.getText());
 	}
 
 	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
-		
+
 		getCommonInputData();
-		
-		boolean allInputOK=inputValidate(new ArrayList<String>(guiData.values()));
 
-		
-		if(allInputOK){
-			
-			try
-			{
-				Double.parseDouble(guiData.get(CompanyCustomer.NO_OF_EMPLOYEE_FIELD));
+		boolean allInputOK = inputValidate(new ArrayList<String>(
+				guiData.values()));
+
+		if (allInputOK) {
+
+			try {
+				Double.parseDouble(guiData
+						.get(CompanyCustomer.NO_OF_EMPLOYEE_FIELD));
+			} catch (NumberFormatException e) {
+				JOptionPane
+						.showMessageDialog(null, "Insert Number of Employee");
+
+				return;
 			}
-			catch(NumberFormatException e)
-			{
-			    JOptionPane.showMessageDialog(null, "Insert Number of Employee");
-			  
-			    return;
-			}
 
-			String type = SimpleTypeFactory.getDefaultTypeFactory().getTypes()[0];
+			String type = SimpleAccountTypeFactory.getDefaultTypeFactory()
+					.getAccountTypes()[0];
 
-			command = new CompanyAccountOpenCommand(parentframe.getController(),
-				guiData, SimpleTypeFactory.getDefaultTypeFactory()
-						.getType(type));
+			command = new CompanyAccountOpenCommand(
+					parentframe.getController(), guiData, SimpleAccountTypeFactory
+							.getDefaultTypeFactory().getAccountType(type));
 			command.exceute();
 
 			parentframe.modelUpdated();
 
 			dispose();
-		}
-		else 
-		{
+		} else {
 			JOptionPane.showMessageDialog(null, "Please Input All Data");
 		}
 	}

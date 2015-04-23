@@ -2,11 +2,13 @@ package framework.component;
 
 public class CreditCommand implements ITransactionCommand {
 
-	FinanceHandler controller;
+	FinanceSystem controller;
 	String amount;
 	String accoutnNumber;
 
-	public CreditCommand(FinanceHandler controller, String accoutnNumber) {
+
+	public CreditCommand(FinanceSystem controller, String accoutnNumber) {
+
 		this.controller = controller;
 		this.accoutnNumber = accoutnNumber;
 	}
