@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import framework.model.DefaultModel;
 import framework.model.IModel;
 import framework.view.AGui;
@@ -48,8 +50,21 @@ public class FinanceHandler {
 
 	public void generateReport(Date fromDate, Date toDate, IReport reportType) {
 		
+		
 		for (IAccount account : model.getAllAcounts())
+		{
+			
 			account.generateReport(fromDate, toDate, reportType);
+		}
+		
+		if(model.getAllAcounts().size()>0)
+		{
+			JOptionPane.showMessageDialog(null, "Report Generated on Report Folder");
+		}
+		else {
+			
+			JOptionPane.showMessageDialog(null, "No Account aviailable for report");
+		}
 	}
 
 	public void generateReport(Date fromDate, Date toDate, IReport reportType,

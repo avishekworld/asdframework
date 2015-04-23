@@ -10,8 +10,6 @@ public interface IAccount {
 	
 	public void addInterest();
 	
-	public double getCurrentBalance();
-	
 	public void notifyCustomer(TransactionEntry transactionEntry);
 	
 	public void generateReport(Date date1, Date date2, IReport reportType);

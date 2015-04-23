@@ -10,8 +10,8 @@ import javax.swing.JOptionPane;
 public class Account implements IAccount{
 	public static int accountCounter = 2000;
 	protected AccountType accountType;
-	private double accountBalance;
-	private ICustomer owner;
+	protected double accountBalance;
+	protected ICustomer owner;
 	private String accountNumber;
 	public List<ITransactionEntry> transactionEntry;
 	public Date accountOpenDate;
@@ -36,7 +36,7 @@ public class Account implements IAccount{
 	}
 
 	public void doDebit(double amount) {
-		ITransactionEntry newEntry = new DebitEntry(getCurrentBalance(), amount,
+		ITransactionEntry newEntry = new DebitEntry(accountBalance, amount,
 				getAccountNumber());
 
 		if(accountType.isTransactionValidate(newEntry))
@@ -61,7 +61,7 @@ public class Account implements IAccount{
 	}
 
 	public void doCredit(Double amount) {
-		TransactionEntry newEntry = new CreditEntry(getCurrentBalance(), amount,
+		TransactionEntry newEntry = new CreditEntry(accountBalance, amount,
 				getAccountNumber());
 
 		accountBalance = newEntry.getNewBalance();
@@ -76,20 +76,16 @@ public class Account implements IAccount{
 	}
 
 	public void addInterest() {
-		TransactionEntry newEntry = new CreditEntry(getCurrentBalance(),
-				(accountType.getInterestRate()/100) * getCurrentBalance(),
+		TransactionEntry newEntry = new CreditEntry(accountBalance,
+				(accountType.getInterestRate()/100) * accountBalance,
 				"Add Interest");
 		accountBalance = newEntry.getNewBalance();
 		transactionEntry.add(newEntry);
 	}
 
-	public double getCurrentBalance() {
-		return accountBalance;
-	}
-
 	public void notifyCustomer(TransactionEntry transactionEntry) {
 		System.out.println(" Account " + getAccountNumber()
-				+ " : balance is negative: $" + getCurrentBalance() + " !"
+				+ " : balance is negative: $" + accountBalance + " !"
 				+ "Warning: negative balance");
 	}
 
@@ -109,7 +105,9 @@ public class Account implements IAccount{
 			}
 		}// for
 
+		reportType.setAccount(this);
 		reportType.Generate(getAccountNumber(), reportEntryList);
+		
 	}
 
 	public double getTotalDebitAmount(Date date1, Date date2) {
@@ -121,10 +119,10 @@ public class Account implements IAccount{
 		date2.setMinutes(59);
 		date2.setSeconds(59);
 		for (ITransactionEntry e : transactionEntry) {
-			if ((date1.equals(e.getDate()) && date2.equals(e.getDate()))
-					|| (date1.after(e.getDate()) && date2.before(e.getDate()))) {
+			if ((date1.equals(e.getDate()) || date2.equals(e.getDate()))
+					|| (date1.before(e.getDate()) && date2.after(e.getDate()))) {
 
-				if (e.getEntryType().equals("DebitEntry")) {
+				if (e.getEntryType().equals("Debit")) {
 					debitAmount += e.getEntryAmount();
 				}
 			}
@@ -143,10 +141,10 @@ public class Account implements IAccount{
 		date2.setMinutes(59);
 		date2.setSeconds(59);
 		for (ITransactionEntry e : transactionEntry) {
-			if ((date1.equals(e.getDate()) && date2.equals(e.getDate()))
-					|| (date1.after(e.getDate()) && date2.before(e.getDate()))) {
+			if ((date1.equals(e.getDate()) || date2.equals(e.getDate()))
+					|| (date1.before(e.getDate()) && date2.after(e.getDate()))) {
 
-				if (e.getEntryType().equals("CreditEntry")) {
+				if (e.getEntryType().equals("Credit")) {
 					crebitAmount += e.getEntryAmount();
 				}
 			}

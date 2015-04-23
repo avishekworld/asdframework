@@ -1,15 +1,13 @@
 package framework.component;
 
-public class CreditCommand implements ICommand {
+public class CreditCommand implements ITransactionCommand {
 
 	FinanceHandler controller;
 	String amount;
 	String accoutnNumber;
 
-	public CreditCommand(FinanceHandler controller, String accoutnNumber,
-			String amount) {
+	public CreditCommand(FinanceHandler controller, String accoutnNumber) {
 		this.controller = controller;
-		this.amount = amount;
 		this.accoutnNumber = accoutnNumber;
 	}
 
@@ -19,5 +17,11 @@ public class CreditCommand implements ICommand {
 		IAccount account = controller.getAccount(accoutnNumber);
 		account.doCredit(Double.parseDouble(amount));
 
+	}
+	
+	@Override
+	public void setAmount(String amount) {
+		this.amount=amount;
+		
 	}
 }

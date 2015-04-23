@@ -1,21 +1,24 @@
 package framework.view;
 
+import javax.swing.JOptionPane;
+
 import framework.component.CreditCommand;
 import framework.component.ICommand;
+import framework.component.ITransactionCommand;
+import framework.view.AGui;
 
-public class JDialogTransaction extends javax.swing.JDialog{
-
+public class TransactionDialog extends javax.swing.JDialog {
 
 	private AGui parentframe;
 	private String accnr;
-	ICommand command;
+	ITransactionCommand command;
 
-	public JDialogTransaction(String title,AGui myframe, String aaccnr,ICommand command) {
+	public TransactionDialog(AGui myframe,String title,String aaccnr,ITransactionCommand command) {
 		super(myframe);
 		parentframe = myframe;
 		accnr = aaccnr;
 		this.command=command;
-		setTitle("Deposit");
+		setTitle(title);
 		setModal(true);
 		getContentPane().setLayout(null);
 		setSize(268, 126);
@@ -72,17 +75,29 @@ public class JDialogTransaction extends javax.swing.JDialog{
 	}
 
 	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
+		
 		String accountNumber = JTextField_Account_Number.getText();
+		
+		
 		String amount = JTextField_Deposit.getText();
 		
-		// System.out.println("" + amount);
-		command = new CreditCommand(parentframe.getController(), accountNumber,
-				amount);
-		command.exceute();
+		try
+		{
+		  
+		  	command.setAmount(amount);
+		  	command.exceute();
 
-		parentframe.modelUpdated();
+			parentframe.modelUpdated();
+			
+			dispose();
+		}
+		catch(NumberFormatException e)
+		{
+		  JOptionPane.showMessageDialog(null, "Insert Amount");
+		}
 		
-		dispose();
+		
+		
 	}
 
 	void JButtonCalcel_actionPerformed(java.awt.event.ActionEvent event) {

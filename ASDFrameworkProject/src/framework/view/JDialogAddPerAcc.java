@@ -17,9 +17,9 @@ import framework.component.SimpleTypeFactory;
 public class JDialogAddPerAcc extends JDialogAddAccount {
 
 	protected JTextField JTextField_BD;
-	JLabel JLabel6 = new javax.swing.JLabel();
+	JLabel JLabel6;
 
-	protected SymAction mySymAction = new SymAction();
+	protected SymAction personalAccActionListner = new SymAction();
 
 	public JDialogAddPerAcc(AGui myframe) {
 		super(myframe);
@@ -29,13 +29,14 @@ public class JDialogAddPerAcc extends JDialogAddAccount {
 		getContentPane().add(JTextField_BD);
 		JTextField_BD.setBounds(84, 204, 156, 20);
 
+		JLabel6 = new JLabel();
 		JLabel6.setText("Birthdate");
 		getContentPane().add(JLabel6);
 		JLabel6.setForeground(java.awt.Color.black);
 		JLabel6.setBounds(12, 204, 96, 24);
 
-		JButton_OK.addActionListener(mySymAction);
-		JButton_Cancel.addActionListener(mySymAction);
+		JButton_OK.addActionListener(personalAccActionListner);
+		JButton_Cancel.addActionListener(personalAccActionListner);
 
 	}
 
@@ -56,20 +57,7 @@ public class JDialogAddPerAcc extends JDialogAddAccount {
 		guiData.put(PersonalCustomer.BIRTH_DATE_FIELD, JTextField_BD.getText());
 	}
 	
-	
 
-	public static boolean isDateValid(String date) 
-	{
-		String DATE_FORMAT = "mm/dd/yyyy";
-	        try {
-	            DateFormat df = new SimpleDateFormat(DATE_FORMAT);
-	            df.setLenient(false);
-	            df.parse(date);
-	            return true;
-	        } catch (Exception e) {
-	            return false;
-	        }
-	}
 
 	void JButtonOK_actionPerformed(java.awt.event.ActionEvent event) {
 		

@@ -3,7 +3,7 @@ package framework.component;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public abstract class Customer implements ICustomer {
+public class Customer implements ICustomer {
 	public static int customerCounter;
 	protected String name;
 	protected String street;
@@ -113,6 +113,12 @@ public void update(ITransactionEntry transactionEntry) {
 	public NotificationRule getNotificationRule() {
 		return notificationRule;
 	}
+
+	public void setNotificationRule(NotificationRule notificationRule) {
+		this.notificationRule = notificationRule;
+	}
+	
+	
 	
 }
 

@@ -5,7 +5,7 @@ public abstract class AccountType {
 	private double interestRate;
 	private double maxTransactionLimit;
 	private double lowestBalanceAllowed;
-
+	
 	
 
 	public AccountType(String typeName, double interestRate, double maxTransactionLimit,double lb) {

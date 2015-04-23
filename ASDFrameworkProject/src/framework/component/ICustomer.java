@@ -12,6 +12,8 @@ public interface ICustomer {
 	
 	public NotificationRule getNotificationRule();
 	
+	public void setNotificationRule(NotificationRule notificationRule);
+	
 	public void update(ITransactionEntry transactionEntry);
 	
 	public String getName();

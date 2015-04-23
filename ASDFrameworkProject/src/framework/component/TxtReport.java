@@ -9,13 +9,10 @@ import java.util.List;
 
 public class TxtReport implements IReport {
 	File file;
-	String dirPath = "Reports";
+	String dirPath = "Reports_Framework";
 	BufferedWriter output;
+	IAccount account;
 
-	public TxtReport() throws IOException {
-		// TODO Auto-generated constructor stub
-
-	}
 
 	@Override
 	public void Generate(String accountNumber, List<ITransactionEntry> inputListOfEntry) {
@@ -23,6 +20,7 @@ public class TxtReport implements IReport {
 		createFile(accountNumber);
 		
 		PrintWriter out = new PrintWriter(output);
+		
 		
 		out.println("[ Date \t\t Befor Balance \t Issuer Name \t Account Type \t Amount \t New Amount ]");
 		
@@ -65,6 +63,12 @@ public class TxtReport implements IReport {
 			}
 		}
 
+		
+	}
+
+	@Override
+	public void setAccount(IAccount account) {
+		this.account=account;
 		
 	}
 

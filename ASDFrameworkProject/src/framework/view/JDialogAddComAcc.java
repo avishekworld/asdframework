@@ -15,7 +15,7 @@ public class JDialogAddComAcc extends JDialogAddAccount {
 
 	protected JTextField JTextField_NoOfEmp = new JTextField();
 	JLabel JLabel6 = new JLabel();
-	protected SymAction mySymAction = new SymAction();
+	protected SymAction companyAccActionListner = new SymAction();
 
 	public JDialogAddComAcc(AGui myframe) {
 		super(myframe);
@@ -31,8 +31,8 @@ public class JDialogAddComAcc extends JDialogAddAccount {
 		JLabel6.setForeground(java.awt.Color.black);
 		JLabel6.setBounds(12, 204, 96, 24);
 
-		JButton_OK.addActionListener(mySymAction);
-		JButton_Cancel.addActionListener(mySymAction);
+		JButton_OK.addActionListener(companyAccActionListner);
+		JButton_Cancel.addActionListener(companyAccActionListner);
 
 	}
 

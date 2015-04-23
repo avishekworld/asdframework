@@ -5,6 +5,8 @@ package framework.view;
  */
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import framework.component.Account;
@@ -98,7 +100,7 @@ public class JDialogAddAccount extends javax.swing.JDialog {
 	protected javax.swing.JButton JButton_OK = new javax.swing.JButton();
 	protected javax.swing.JButton JButton_Cancel = new javax.swing.JButton();
 	protected javax.swing.JTextField JTextField_ACNR = new javax.swing.JTextField();
-	javax.swing.JLabel JLabel8 = new javax.swing.JLabel();
+	protected javax.swing.JLabel JLabel8 = new javax.swing.JLabel();
 
 	// }}
 
@@ -111,6 +113,19 @@ public class JDialogAddAccount extends javax.swing.JDialog {
 		JTextField_ST.setText("Iowa");
 		JTextField_EM.setText("name@email.com");
 
+	}
+	
+	public static boolean isDateValid(String date) 
+	{
+		String DATE_FORMAT = "mm/dd/yyyy";
+	        try {
+	            DateFormat df = new SimpleDateFormat(DATE_FORMAT);
+	            df.setLenient(false);
+	            df.parse(date);
+	            return true;
+	        } catch (Exception e) {
+	            return false;
+	        }
 	}
 	
 	public boolean inputValidate(List<String> allInput)

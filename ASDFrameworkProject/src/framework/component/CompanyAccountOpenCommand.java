@@ -22,7 +22,7 @@ public class CompanyAccountOpenCommand implements ICommand {
 		
 		if(controller.getAccount(guiData.get(Account.ACC_NUM_FIELD))==null)
 		{
-			CompanyCustomer companyCustomer=new CompanyCustomer(guiData);
+			ICustomer companyCustomer=new CompanyCustomer(guiData);
 			IAccount account=new Account(guiData,accountType);
 			companyCustomer.addAccount(account);
 			controller.addCustomer(companyCustomer);

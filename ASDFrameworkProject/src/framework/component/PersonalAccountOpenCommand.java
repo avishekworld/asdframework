@@ -22,7 +22,7 @@ public class PersonalAccountOpenCommand implements ICommand {
 
 		if(controller.getAccount(guiData.get(Account.ACC_NUM_FIELD))==null)
 		{
-			PersonalCustomer personalCustomer = new PersonalCustomer(guiData);
+			ICustomer personalCustomer = new PersonalCustomer(guiData);
 			Account account = new Account(guiData,accountType);
 			personalCustomer.addAccount(account);
 			controller.addCustomer(personalCustomer);

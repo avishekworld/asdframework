@@ -11,7 +11,7 @@ public abstract class TransactionEntry implements ITransactionEntry{
 	protected double amount;
 	private String entryName;
 
-	TransactionEntry(String entryType, double theBalance, double theAmount,
+	protected TransactionEntry(String entryType, double theBalance, double theAmount,
 			String theIssuerName) {
 		this.entryName=entryType;
 		date=Calendar.getInstance().getTime();

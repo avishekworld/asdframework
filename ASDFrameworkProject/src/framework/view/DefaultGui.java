@@ -9,21 +9,17 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-
-
-
-
-
-
 import javax.swing.Box;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import framework.component.Account;
+import framework.component.CreditCommand;
 import framework.component.Customer;
+import framework.component.DebitCommand;
 import framework.component.FinanceHandler;
 import framework.component.IAccount;
+import framework.component.ITransactionCommand;
 import framework.component.TxtReport;
 
 
@@ -33,10 +29,10 @@ public class DefaultGui extends AGui {
 	protected DefaultTableModel model;
 	protected JButton JButton_PerAC;
 	protected JButton JButton_CompAC;
-	JButton JButton_Deposit;
-	JButton JButton_Withdraw;
-	JButton JButton_Addinterest;
-	JButton JButton_GenerateReport;
+	protected JButton JButton_Deposit;
+	protected JButton JButton_Withdraw;
+	protected JButton JButton_Addinterest;
+	protected JButton JButton_GenerateReport;
 
 	public DefaultGui(String title, FinanceHandler controller) {
 		super(title, controller);
@@ -182,10 +178,12 @@ public class DefaultGui extends AGui {
 		int selection = JTable1.getSelectionModel().getMinSelectionIndex();
 		
         if (selection >=0){
+        	
             String accountNumber = (String)model.getValueAt(selection, 0);
             
-		    //Show the dialog for adding deposit amount for the current mane
-		    JDialog_Deposit dep = new JDialog_Deposit(myframe,accountNumber);
+		    ITransactionCommand command=new CreditCommand(getController(), accountNumber);
+		    
+		    TransactionDialog dep = new TransactionDialog(myframe,"Deposit",accountNumber,command);
 		    dep.setBounds(430, 15, 275, 180);
 		    dep.show();
         }
@@ -195,6 +193,25 @@ public class DefaultGui extends AGui {
 		
 	}
 	
+	void JButtonWithdraw_actionPerformed(java.awt.event.ActionEvent event)
+	{
+	    // get selected name
+        int selection = JTable1.getSelectionModel().getMinSelectionIndex();
+        
+        if (selection >=0){
+        	
+        	String accountNumber = (String)model.getValueAt(selection, 0);
+            
+		    ITransactionCommand command=new DebitCommand(getController(), accountNumber);
+		    
+		    TransactionDialog dep = new TransactionDialog(myframe,"Deposit",accountNumber,command);
+		    dep.setBounds(430, 15, 275, 180);
+		    dep.show();
+        }
+		   
+
+	}
+	
 	private void JButtonAddinterest_actionPerformed(ActionEvent event) {
 		
 		controller.addInterest();
@@ -202,22 +219,6 @@ public class DefaultGui extends AGui {
 		modelUpdated();
 	}
 
-	void JButtonWithdraw_actionPerformed(java.awt.event.ActionEvent event)
-	{
-	    // get selected name
-        int selection = JTable1.getSelectionModel().getMinSelectionIndex();
-        
-        if (selection >=0){
-            String accountNumber = (String)model.getValueAt(selection, 0);
-
-		    //Show the dialog for adding withdraw amount for the current mane
-		    JDialog_Withdraw wd = new JDialog_Withdraw(myframe,accountNumber);
-		    wd.setBounds(430, 15, 275, 180);
-		    wd.show();
-        }
-		   
-
-	}
 	
 	void JButtonGenerateReport_actionPerformed(java.awt.event.ActionEvent event)
 	{
@@ -225,7 +226,7 @@ public class DefaultGui extends AGui {
 	    
 		try {
 			getController().generateReport(startDate, new Date(), new TxtReport());
-		} catch (IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
 		}
